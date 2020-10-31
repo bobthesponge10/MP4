@@ -76,3 +76,8 @@ void print_text(string text){
 void sleep(int milli){
 	this_thread::sleep_for(chrono::milliseconds(milli));
 }
+
+void wait_for_input(){
+	cout << ": ";
+	cin.ignore(1, '\n');
+}

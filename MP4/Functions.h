@@ -20,3 +20,4 @@ string fg(Color c);
 void display_items(vector<Item> items, string title);
 void print_text(string text);
 void sleep(int milli);
+void wait_for_input();

@@ -142,8 +142,7 @@ int main(){
 
 	p.view_tile(1, 0);
 
-	cout << ": ";
-	cin.ignore(1, '\n');
+	wait_for_input();
 
 	while(true){
 		m.update();
@@ -163,20 +162,16 @@ int main(){
 			p.move_right();
 		}else if(inp == 'i'){
 			p.print_items();
-			cout << ": ";
-			cin.ignore(1, '\n');
+			wait_for_input();
 		}else if(inp == 'v'){
 			p.view_tile(p.get_x() - 1, p.get_y());
-			cout << ": ";
-			cin.ignore(1, '\n');
+			wait_for_input();
 		}else if(inp == 'g'){
 			p.get_item_from_tile(p.get_x() - 1, p.get_y(), 0);
-			cout << ": ";
-			cin.ignore(1, '\n');
+			wait_for_input();
 		} else if(inp == 'p'){
 			p.put_item_to_tile(p.get_x() - 1, p.get_y(), 0);
-			cout << ": ";
-			cin.ignore(1, '\n');
+			wait_for_input();
 		}
 	}
 }
