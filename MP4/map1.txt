@@ -1,0 +1,28 @@
+size: 30,20
+createTile g
+char g *
+bcolor g 0 200 0
+fcolor g 191 147 13
+solid g false
+
+map
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
+gggggggggggggggggggggggggggggg
