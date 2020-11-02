@@ -81,3 +81,11 @@ void wait_for_input(){
 	cout << ": ";
 	cin.ignore(1, '\n');
 }
+bool contains(string key, vector<string> values){
+	for(int i = 0; i < values.size(); i++){
+		if(key==values[i]){
+			return true;
+		}
+	}
+	return false;
+}

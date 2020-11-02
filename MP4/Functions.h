@@ -8,7 +8,6 @@ using namespace std;
 #include "Structures.h"
 #include "Item.h"
 
-
 struct Color;
 class Item;
 
@@ -21,3 +20,4 @@ void display_items(vector<Item> items, string title);
 void print_text(string text);
 void sleep(int milli);
 void wait_for_input();
+bool contains(string key, vector<string> values);

@@ -144,12 +144,16 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MP4.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Structures.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Tiles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Tiles.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MP4.h" />

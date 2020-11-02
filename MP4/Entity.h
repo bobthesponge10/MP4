@@ -6,6 +6,8 @@ using namespace std;
 #include "Structures.h"
 
 class Map;
+class Tile;
+struct Color;
 
 class Entity{
 public:
