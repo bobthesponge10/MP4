@@ -55,7 +55,7 @@ void Entity::set_map(Map* m){
 Map* Entity::get_map(){
 	return map;
 }
-void Entity::move_up(){
+bool Entity::move_up(){
 
 	// Gets entity's x and y
 	int x = get_x();
@@ -64,9 +64,11 @@ void Entity::move_up(){
 	// Checks if space above is not solid
 	if(!get_map()->check_solid(x, y - 1)){
 		set_y(y - 1);
+		return true;
 	}
+	return false;
 }
-void Entity::move_down(){
+bool Entity::move_down(){
 
 	// Gets entity's x and y
 	int x = get_x();
@@ -75,9 +77,11 @@ void Entity::move_down(){
 	// Checks if space below is not solid
 	if(!get_map()->check_solid(x, y + 1)){
 		set_y(y + 1);
+		return true;
 	}
+	return false;
 }
-void Entity::move_left(){
+bool Entity::move_left(){
 
 	// Gets entity's x and y
 	int x = get_x();
@@ -86,9 +90,11 @@ void Entity::move_left(){
 	// Checks if space to the left is not solid
 	if(!get_map()->check_solid(x - 1, y)){
 		set_x(x - 1);
+		return true;
 	}
+	return false;
 }
-void Entity::move_right(){
+bool Entity::move_right(){
 
 	// Gets entity's x and y
 	int x = get_x();
@@ -97,6 +103,8 @@ void Entity::move_right(){
 	// Checks if space to the right is not solid
 	if(!get_map()->check_solid(x + 1, y)){
 		set_x(x + 1);
+		return true;
 	}
+	return false;
 }
 void Entity::update(){}

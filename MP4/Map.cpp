@@ -89,6 +89,8 @@ bool Map::check_solid(int x, int y){
 	// Gets tile at coordinate
 	Tile* p = get_tile_p(x, y);
 
+	if(get_entity(x, y) != -1){ return true; }
+
 	// Returns if tile is solid
 	return p->get_solid();
 }
@@ -117,7 +119,7 @@ void Map::render(){
 		}
 	}
 }
-void Map::render(int x, int y, int w_, int h_){
+string Map::render(int x, int y, int w_, int h_, bool out){
 
 	// Initializes variables
 	int x_, y_, e;
@@ -134,21 +136,25 @@ void Map::render(int x, int y, int w_, int h_){
 			x_ = x + j;
 			y_ = y + i;
 
-			// Checks if an entity is on this coordinate
-			e = get_entity(x_, y_);
+			// Checks if coordinate is in map
+			if(x_ >= 0 && x_ < w && y_ >= 0 && y_ < h){
 
-			// Gets tile for given coordinate
-			t = tiles[x_ + y_ * (w)];
+				// Checks if an entity is on this coordinate
+				e = get_entity(x_, y_);
 
-			// If entity is not on current coord
-			if(e == -1){
+				// Gets tile for given coordinate
+				t = tiles[x_ + y_ * (w)];
 
-				// Renders tile t to string
-				s += t->r_render();
-			} else{
+				// If entity is not on current coord
+				if(e == -1){
 
-				// Renders entity to string
-				s += entities[e]->r_render(t);
+					// Renders tile t to string
+					s += t->r_render();
+				} else{
+
+					// Renders entity to string
+					s += entities[e]->r_render(t);
+				}
 			}
 		}
 
@@ -156,6 +162,9 @@ void Map::render(int x, int y, int w_, int h_){
 		s += "\n";
 	}
 
-	// Prints string to screen
-	cout << s;
+	// Prints string to screen if specified
+	if(out){
+		cout << s;
+	}
+	return s;
 }

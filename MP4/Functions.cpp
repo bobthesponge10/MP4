@@ -89,3 +89,7 @@ bool contains(string key, vector<string> values){
 	}
 	return false;
 }
+
+void clear_screen(){
+	system("CLS");
+}

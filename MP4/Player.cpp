@@ -1,15 +1,16 @@
 #include "Player.h"
 
 
-const vector<string> up_   {"w", "up"};
-const vector<string> down_ {"s", "down"};
-const vector<string> left_ {"a", "left"};
-const vector<string> right_{"d", "right"};
+const vector<string> up_        {"w", "up"};
+const vector<string> down_      {"s", "down"};
+const vector<string> left_      {"a", "left"};
+const vector<string> right_     {"d", "right"};
 
-const vector<string> inventory_{"i", "inventory"};
-const vector<string> view_     {"v", "view", "interact"};
-const vector<string> get_      {"g", "get", "take"};
-const vector<string> put_      {"p", "put", "place"};
+const vector<string> inventory_ {"i", "inventory"};
+const vector<string> view_      {"v", "view", "interact"};
+const vector<string> get_       {"g", "get", "take"};
+const vector<string> put_       {"p", "put", "place"};
+const vector<string> fight_     {"f", "fight", "battle", "attack"};
 
 Player::Player(){
 	set_char('@');
@@ -123,6 +124,22 @@ void Player::parse_input(string input){
 		}
 	}
 }
-void Player::render_window(int w, int h){
-	
+void Player::render_window(int w, int h, bool clear){
+	int w_ = get_map()->get_w();
+	int h_ = get_map()->get_h();
+
+	if(w > w_){ w = w_; }
+	if(h > h_){ h = h_; }
+
+	int x = get_x() - w / 2;
+	if(x < 0){ x = 0; }
+	if(x + w > w_){ x = w_ - w; }
+	int y = get_y() - h / 2;
+	if(y < 0){ y = 0; }
+	if(y + h > h_){ y = h_ - h; }
+
+
+	string s = get_map()->render(x, y, w, h, false);
+	if(clear){ clear_screen(); }
+	cout << s;
 }

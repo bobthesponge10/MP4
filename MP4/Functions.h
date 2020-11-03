@@ -21,3 +21,4 @@ void print_text(string text);
 void sleep(int milli);
 void wait_for_input();
 bool contains(string key, vector<string> values);
+void clear_screen();

@@ -8,7 +8,7 @@ using namespace std;
 #include "Map.h"
 #include "Item.h"
 #include "Tiles.h"
-
+#include "Enemy.h"
 
 
 #include <iostream>

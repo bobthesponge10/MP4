@@ -27,6 +27,14 @@ int main(){
 	m.set_tile(4, 2, &s);
 	m.set_tile(4, 1, &s);
 	m.set_tile(4, 0, &s);
+	m.set_tile(6, 3, &s);
+	m.set_tile(7, 3, &s);
+	m.set_tile(8, 3, &s);
+	m.set_tile(9, 3, &s);
+	m.set_tile(9, 2, &s);
+	m.set_tile(9, 1, &s);
+	m.set_tile(9, 0, &s);
+
 
 	Player p = Player();
 
@@ -52,12 +60,18 @@ int main(){
 
 	m.set_tile(1, 0, &c);
 
-	p.view_tile(1, 0);
+	Enemy e = Enemy();
+	e.set_char('A');
+	e.set_fg(Color(255, 0, 0));
+	e.set_x(7);
+	e.set_y(1);
+	e.set_ai(2);
+
+	m.add_entity(&e);
 
 	while(true){
 		m.update();
-		system("CLS");
-		m.render(0, 0, m.get_w(), m.get_h());
+		p.render_window(100, 100, true);
 		reset_colors();
 		cout << ":";
 		getline(cin, inp);

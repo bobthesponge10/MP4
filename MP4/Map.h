@@ -19,7 +19,7 @@ public:
 	bool check_solid(int x, int y);
 	void update();
 	void render();
-	void render(int x, int y, int w_, int h_);
+	string render(int x, int y, int w_, int h_, bool out);
 private:
 	int w;
 	int h;

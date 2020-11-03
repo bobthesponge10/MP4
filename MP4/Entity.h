@@ -26,10 +26,10 @@ public:
 	int get_y();
 	void set_map(Map* m);
 	Map* get_map();
-	void move_up();
-	void move_down();
-	void move_left();
-	void move_right();
+	bool move_up();
+	bool move_down();
+	bool move_left();
+	bool move_right();
 	virtual void update();
 private:
 	char c;
