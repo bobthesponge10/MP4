@@ -103,6 +103,22 @@ void Map::update(){
 		entities[i]->update();
 	}
 }
+void Map::add_flag(string flag){
+	flags.push_back(flag);
+}
+string Map::get_flag(){
+	if(flags.size() > 0){
+		string out = flags[0];
+		flags.erase(flags.begin());
+		return out;
+	}
+	return "";
+}
+vector<string> Map::get_flags(){
+	vector<string> out(flags);
+	flags.clear();
+	return out;
+}
 void Map::render(){
 
 	// Loops over all the tiles in the map

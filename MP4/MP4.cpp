@@ -6,8 +6,8 @@ int main(){
 	Dirt d = Dirt();
 	StoneBrick s = StoneBrick();
 	Map m = Map(30, 15);
-	for(int y = 0; y < 15; y++){
-		for(int x = 0; x < 30; x++){
+	for(int y = 0; y < m.get_w(); y++){
+		for(int x = 0; x < m.get_h(); x++){
 			m.set_tile(x, y, &d);
 		}
 	}
@@ -71,7 +71,7 @@ int main(){
 
 	while(true){
 		m.update();
-		p.render_window(100, 100, true);
+		p.render_window(30, 15, true);
 		reset_colors();
 		cout << ":";
 		getline(cin, inp);

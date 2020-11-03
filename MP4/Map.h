@@ -18,6 +18,9 @@ public:
 	int get_h();
 	bool check_solid(int x, int y);
 	void update();
+	void add_flag(string flag);
+	string get_flag();
+	vector<string> get_flags();
 	void render();
 	string render(int x, int y, int w_, int h_, bool out);
 private:
@@ -26,4 +29,5 @@ private:
 	vector<Tile*> tiles;
 	vector<Entity*> entities;
 	Tile empty = Tile();
+	vector<string> flags;
 };
