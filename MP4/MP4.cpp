@@ -6,14 +6,14 @@ int main(){
 	Dirt d = Dirt();
 	StoneBrick s = StoneBrick();
 	Map m = Map(30, 15);
-	for(int y = 0; y < m.get_w(); y++){
-		for(int x = 0; x < m.get_h(); x++){
+	for(int y = 0; y < m.get_h(); y++){
+		for(int x = 0; x < m.get_w(); x++){
 			m.set_tile(x, y, &d);
 		}
 	}
-	for(int y = 0; y < 5; y++){
-		for(int x = 0; x < 5; x++){
-			m.set_tile(x+3, y+3, &g);
+	for(int y = 0; y < m.get_h() - 5; y++){
+		for(int x = 0; x < m.get_w() - 5; x++){
+			m.set_tile(x+3, y+4, &g);
 		}
 	}
 
@@ -49,6 +49,7 @@ int main(){
 
 	sword.set_name("Iron Sword");
 	sword.set_desc("A simple sword made of iron.");
+	sword.add_attribute("Type", "Weapon");
 	sword.add_attribute("Damage", "5");
 	sword.add_attribute("Durability", "50");
 	//sword.display();
@@ -71,7 +72,7 @@ int main(){
 
 	while(true){
 		m.update();
-		p.render_window(30, 15, true);
+		p.render_window(20, 10, true);
 		reset_colors();
 		cout << ":";
 		getline(cin, inp);

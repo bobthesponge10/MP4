@@ -12,8 +12,8 @@ public:
 	string get_name();
 	void set_desc(string desc_);
 	string get_desc();
-	void display();
-	string get_display();
+	void display(string s);
+	string get_display(string s);
 	void add_attribute(string key, string value);
 	string get_attribute(string key_);
 private:

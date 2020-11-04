@@ -57,17 +57,17 @@ string fg(Color c){
 
 void display_items(vector<Item> items, string title){
 	string s = "";
-	s += "----" + title + "----\n";
+	s += "--------" + title + "--------\n";
 	for(int i = 0; i < items.size(); i++){
-		s+= to_string(i) + ": ";
-		s+= items[i].get_display();
-		s+= "\n";
+		s += to_string(i) + ": ";
+		s += items[i].get_display("   ") + "\n";
+		s += "\n";
 	}
 	print_text(s);
 }
 
 void print_text(string text){
-	for(int i = 1; i < text.length(); i++){
+	for(int i = 0; i < text.length(); i++){
 		sleep(30);
 		cout << text[i];
 	}
@@ -92,4 +92,12 @@ bool contains(string key, vector<string> values){
 
 void clear_screen(){
 	system("CLS");
+}
+
+bool is_integer(string s){
+	for(int i = 0; i < s.length(); i++)
+		if(isdigit(s[i]) == false){
+			return false;
+		}
+	return true;
 }

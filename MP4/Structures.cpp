@@ -28,7 +28,7 @@ Item Inventory::get_item(int i){
 	return Item();
 }
 void Inventory::print_item(int i){
-	inventory[i].display();
+	inventory[i].display("");
 }
 void Inventory::add_item(Item i){
 	inventory.push_back(i);

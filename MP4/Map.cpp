@@ -175,7 +175,7 @@ string Map::render(int x, int y, int w_, int h_, bool out){
 		}
 
 		// Adds new line to string for each row
-		s += "\n";
+		s += reset() + "\n";
 	}
 
 	// Prints string to screen if specified

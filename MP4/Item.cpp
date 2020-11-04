@@ -23,21 +23,15 @@ string Item::get_attribute(string key){
 	}
 	return "";
 }
-void Item::display(){
-	string s = "";
-	s+= name + "\n";
-	s+= desc + "\n";
-	for(auto const& element : attributes){
-		s+= element.first + ": " + element.second + "\n";
-	}
-	print_text(s);
+void Item::display(string s_){
+	print_text(get_display(s_));
 }
-string Item::get_display(){
+string Item::get_display(string s_){
 	string s = "";
 	s += name + "\n";
-	s += desc + "\n";
+	s += s_ + desc + "\n";
 	for(auto const& element : attributes){
-		s += element.first + ": " + element.second + "\n";
+		s += s_ + " -" + element.first + ": " + element.second + "\n";
 	}
 	return s;
 }
