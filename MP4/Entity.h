@@ -28,6 +28,8 @@ public:
 	Map* get_map();
 	void set_type(string t);
 	string get_type();
+	string get_name();
+	void set_name(string n);
 	bool move_up();
 	bool move_down();
 	bool move_left();
@@ -41,4 +43,5 @@ private:
 	Color b_color;
 	Map* map = NULL;
 	string type;
+	string name;
 };

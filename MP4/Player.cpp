@@ -75,7 +75,12 @@ void Player::fight(int x, int y){
 		wait_for_input();
 		return;
 	}
-	Entity* enemy = get_map()->get_entity(e);
+	Entity* enemy_ = get_map()->get_entity(e);
+	Enemy* enemy = (Enemy*)enemy_;
+
+	print_text("Begun battle with " + enemy->get_name() + "\n");
+	wait_for_input();
+	enemy->die();
 }
 void Player::parse_input(string input){
 	stringstream ss;

@@ -61,6 +61,12 @@ void Entity::set_type(string t){
 string Entity::get_type(){
 	return type;
 }
+string Entity::get_name(){
+	return name;
+}
+void Entity::set_name(string n){
+	name = n;
+}
 bool Entity::move_up(){
 
 	// Gets entity's x and y

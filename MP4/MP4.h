@@ -9,6 +9,7 @@ using namespace std;
 #include "Item.h"
 #include "Tiles.h"
 #include "Enemy.h"
+#include "Maps.h"
 
 
 #include <iostream>
