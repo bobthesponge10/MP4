@@ -45,19 +45,24 @@ int main(){
 
 	string inp;
 
-	Item sword;
+	Item sword, armor;
 
 	sword.set_name("Iron Sword");
 	sword.set_desc("A simple sword made of iron.");
 	sword.add_attribute("Type", "Weapon");
 	sword.add_attribute("Damage", "5");
-	sword.add_attribute("Durability", "50");
+
+	armor.set_name("Leather armor");
+	armor.set_desc("A piece of old, worn out leather armor");
+	armor.add_attribute("Type", "Armor");
+	armor.add_attribute("Protection", "20");
 	//sword.display();
 
 	//p.add_item(sword);
 
 	Chest c = Chest();
 	c.add_item(sword);
+	c.add_item(armor);
 
 	m.set_tile(1, 0, &c);
 

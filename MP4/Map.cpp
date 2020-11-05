@@ -52,7 +52,7 @@ void Map::add_entity(Entity* e){
 	// Sets the entities map to the current map
 	e->set_map(this);
 }
-int Map::get_entity(int x, int y){
+int Map::find_entity(int x, int y){
 
 	// Initializes e to be a pointer to an entity
 	Entity* e = NULL;
@@ -74,6 +74,12 @@ int Map::get_entity(int x, int y){
 	// Returns -1 if no entity was found
 	return -1;
 }
+Entity* Map::get_entity(int i){
+	if(i >= 0 && i < entities.size()){
+		return entities[i];
+	}
+	return NULL;
+}
 int Map::get_w(){
 	return w;
 }
@@ -89,7 +95,7 @@ bool Map::check_solid(int x, int y){
 	// Gets tile at coordinate
 	Tile* p = get_tile_p(x, y);
 
-	if(get_entity(x, y) != -1){ return true; }
+	if(find_entity(x, y) != -1){ return true; }
 
 	// Returns if tile is solid
 	return p->get_solid();
@@ -156,7 +162,7 @@ string Map::render(int x, int y, int w_, int h_, bool out){
 			if(x_ >= 0 && x_ < w && y_ >= 0 && y_ < h){
 
 				// Checks if an entity is on this coordinate
-				e = get_entity(x_, y_);
+				e = find_entity(x_, y_);
 
 				// Gets tile for given coordinate
 				t = tiles[x_ + y_ * (w)];

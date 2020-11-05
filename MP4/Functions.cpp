@@ -61,7 +61,6 @@ void display_items(vector<Item> items, string title){
 	for(int i = 0; i < items.size(); i++){
 		s += to_string(i) + ": ";
 		s += items[i].get_display("   ") + "\n";
-		s += "\n";
 	}
 	print_text(s);
 }

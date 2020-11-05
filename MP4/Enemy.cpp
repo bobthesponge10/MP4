@@ -2,10 +2,12 @@
 
 
 Enemy::Enemy(){
+	hp = -1;
 	ai = 0;
 	x_v = 0;
 	y_v = 0;
 	alive = true;
+	set_type("enemy");
 }
 int Enemy::get_hp(){
 	return hp;

@@ -13,7 +13,8 @@ public:
 	Tile* get_tile_p(int x, int y);
 	void set_tile(int x, int y, Tile* t);
 	void add_entity(Entity* e);
-	int get_entity(int x, int y);
+	int find_entity(int x, int y);
+	Entity* get_entity(int i);
 	int get_w();
 	int get_h();
 	bool check_solid(int x, int y);

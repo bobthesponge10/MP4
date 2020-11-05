@@ -43,7 +43,7 @@ void Player::get_item_from_tile(int x, int y, int index){
 		if(i.get_name() != ""){
 			c->remove_item(index);
 			add_item(i);
-			print_text("Got " + i.get_name() + " from chest.\n");
+			print_text("Got " + i.get_name() + " from the chest.\n");
 			wait_for_input();
 		}else{
 			print_text("Incorrect index of item in chest.\n");
@@ -60,7 +60,7 @@ void Player::put_item_to_tile(int x, int y, int index){
 		if(i.get_name() != ""){
 			remove_item(index);
 			c->add_item(i);
-			print_text("Put " + i.get_name() + " into chest.\n");
+			print_text("Put " + i.get_name() + " into the chest.\n");
 			wait_for_input();
 		}else{
 			print_text("Incorrect index of item in inventory.\n");
@@ -69,7 +69,13 @@ void Player::put_item_to_tile(int x, int y, int index){
 	}
 }
 void Player::fight(int x, int y){
-
+	int e = get_map()->find_entity(x, y);
+	if(e == -1 || get_map()->get_entity(e)->get_type() != "enemy"){
+		print_text("Not a valid target\n");
+		wait_for_input();
+		return;
+	}
+	Entity* enemy = get_map()->get_entity(e);
 }
 void Player::parse_input(string input){
 	stringstream ss;
@@ -139,6 +145,9 @@ void Player::parse_input(string input){
 			} else if(contains(args[1], armor_)){
 				unequip_armor();
 			}
+		}
+		else if(contains(args[0], fight_)){
+			fight(nx, ny);
 		}
 	}
 
@@ -224,7 +233,7 @@ void Player::equip_armor(int index){
 	}
 	Item i = get_item(index);
 	if(i.get_attribute("Type") == "Armor"){
-		weapon = i;
+		armor = i;
 		print_text("You equipped the " + i.get_name() + "\n");
 		remove_item(index);
 	}else{

@@ -55,6 +55,12 @@ void Entity::set_map(Map* m){
 Map* Entity::get_map(){
 	return map;
 }
+void Entity::set_type(string t){
+	type = t;
+}
+string Entity::get_type(){
+	return type;
+}
 bool Entity::move_up(){
 
 	// Gets entity's x and y

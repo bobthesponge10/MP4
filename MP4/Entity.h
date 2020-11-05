@@ -26,6 +26,8 @@ public:
 	int get_y();
 	void set_map(Map* m);
 	Map* get_map();
+	void set_type(string t);
+	string get_type();
 	bool move_up();
 	bool move_down();
 	bool move_left();
@@ -38,4 +40,5 @@ private:
 	Color f_color;
 	Color b_color;
 	Map* map = NULL;
+	string type;
 };
