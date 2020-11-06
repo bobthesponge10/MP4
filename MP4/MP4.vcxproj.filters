@@ -54,6 +54,9 @@
     <ClCompile Include="Cutscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enemies.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tile.h">
@@ -92,6 +95,9 @@
     <ClInclude Include="Cutscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enemies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Jeff.txt">
@@ -100,5 +106,10 @@
     <Text Include="rick.txt">
       <Filter>Cutscenes</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Jeff2.ans">
+      <Filter>Cutscenes</Filter>
+    </None>
   </ItemGroup>
 </Project>

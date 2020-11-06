@@ -49,7 +49,7 @@ DemoMap::DemoMap() :Map(30, 15){
 	potion.set_name("Health Potion");
 	potion.set_desc("A bottle containing red liquid");
 	potion.add_attribute("Type", "Consumable");
-	potion.add_attribute("Regen", "4");
+	potion.add_attribute("Regen", "10");
 
 	c = Chest();
 	c.add_item(sword);
@@ -57,21 +57,10 @@ DemoMap::DemoMap() :Map(30, 15){
 
 	set_tile(1, 0, &c);
 
-	e = Enemy();
-	e.set_char('A');
-	e.set_fg(Color(255, 0, 0));
-	e.set_x(7);
-	e.set_y(1);
-	e.set_ai(2);
-	e.set_name("Jeff");
-	e.set_cutscene("Jeff.txt", 40, 16);
-	e.set_max_hp(30);
-	e.set_hp(30);
+	e = Enemy_Jeff();
 	e.add_item(armor);
 
 	add_entity(&e);
 
 	set_default_coords(2, 1);
-
-	//c.print_items();
 }

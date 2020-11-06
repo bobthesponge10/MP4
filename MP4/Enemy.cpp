@@ -9,7 +9,7 @@ Enemy::Enemy(){
 	y_v = 0;
 	alive = true;
 	escape_chance = 100;
-	current_frame = 1;
+	current_frame = 0;
 	set_type("enemy");
 }
 int Enemy::get_hp(){

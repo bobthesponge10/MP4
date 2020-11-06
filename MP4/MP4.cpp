@@ -2,10 +2,14 @@
 
 
 int main(){
+	print_text("Loading . . .\n");
+	Cutscene BadEnd = Cutscene("rick.txt", 1000 / 25, 1, 30);
+
+
 	vector<string> flags;
 	string inp;
 
-	//Cutscene BadEnd = Cutscene("rick.txt", 1000/25, 1, 30);
+	
 
 	Player p = Player();
 	DemoMap test = DemoMap();
@@ -26,7 +30,8 @@ int main(){
 		for(int i = 0; i < flags.size(); i++){
 			if(flags[i] == "die"){
 				clear_screen();
-				//BadEnd.video();
+				BadEnd.video();
+				wait_for_input();
 				return 0;
 			}
 		}

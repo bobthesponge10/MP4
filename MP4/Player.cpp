@@ -74,6 +74,11 @@ void Player::put_item_to_tile(int x, int y, int index){
 			wait_for_input();
 		}
 	}
+	int i = get_map()->find_entity(x, y);
+	if(i != -1){
+		Entity* e = get_map()->get_entity(i);
+	
+	}
 }
 bool Player::use_item(int index, Enemy* e){
 	bool used = false;
@@ -205,6 +210,7 @@ void Player::fight(int x, int y){
 		}
 
 		if(enemy->get_hp()<=0){
+			print_enemy(enemy);
 			enemy->die();
 			print_text("You defeated " + enemy->get_name() + "\n\n");
 			if(enemy->set_inv_size()>0){
@@ -225,6 +231,7 @@ void Player::fight(int x, int y){
 		}
 
 		if(hp <= 0){
+			print_enemy(enemy);
 			print_text(enemy->get_name() + " killed you\n\n");
 			get_map()->add_flag("die");
 			fight_happening = false;

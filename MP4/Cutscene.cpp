@@ -13,7 +13,7 @@ Cutscene::Cutscene(string f, int s, int w, int h) {
 	current = 0;
 	newfile.open(file, ios::in);
 	string tp, temp;
-	int count = 0;
+	int count = 1;
 	while (!newfile.eof() && !newfile.fail()) {
 		getline(newfile, tp);
 		if (count % height == 0) {
@@ -45,6 +45,8 @@ void Cutscene::next() {
 }
 
 void Cutscene::displayFrame(int f) {
-	cout << frames[f];
-	current = f;
+	if(f >= 0 && f < frames.size()){
+		cout << frames[f];
+		current = f;
+	}
 }

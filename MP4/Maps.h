@@ -3,6 +3,7 @@
 #include "Tile.h"
 #include "Tiles.h"
 #include "Enemy.h"
+#include "Enemies.h"
 
 class DemoMap : public Map{
 public:
