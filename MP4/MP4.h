@@ -10,7 +10,7 @@ using namespace std;
 #include "Tiles.h"
 #include "Enemy.h"
 #include "Maps.h"
-
+#include "Cutscene.h"
 
 #include <iostream>
 #include <string>

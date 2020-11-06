@@ -26,6 +26,7 @@ public:
 	void remove_item(int index);
 	void set_inv_name(string name);
 	string get_inv_name();
+	int set_inv_size();
 private:
 	string inventory_name;
 	vector<Item> inventory;

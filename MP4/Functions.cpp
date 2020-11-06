@@ -62,6 +62,7 @@ void display_items(vector<Item> items, string title){
 		s += to_string(i) + ": ";
 		s += items[i].get_display("   ") + "\n";
 	}
+	s += string(16 + title.length(), '-') + "\n\n";
 	print_text(s);
 }
 
@@ -77,7 +78,7 @@ void sleep(int milli){
 }
 
 void wait_for_input(){
-	cout << ": ";
+	cout << "Press enter to continue: ";
 	cin.ignore(1, '\n');
 }
 bool contains(string key, vector<string> values){

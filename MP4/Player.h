@@ -8,6 +8,8 @@ using namespace std;
 #include "Tiles.h"
 #include "Enemy.h"
 
+class Enemy;
+
 class Player : public Entity, public Inventory{
 public:
 	Player();
@@ -15,6 +17,8 @@ public:
 	void view_tile(int x, int y);
 	void get_item_from_tile(int x, int y, int index);
 	void put_item_to_tile(int x, int y, int index);
+	bool use_item(int index, Enemy* e);
+	void print_enemy(Enemy* enemy);
 	void fight(int x, int y);
 	void parse_input(string input);
 	void render_window(int w, int h, bool clear);
@@ -22,7 +26,11 @@ public:
 	void unequip_weapon();
 	void equip_armor(int index);
 	void equip_weapon(int index);
+	int get_damage();
+	int get_protection();
 private:
 	Item armor;
 	Item weapon;
+	int hp;
+	int max_hp;
 };

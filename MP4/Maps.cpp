@@ -34,7 +34,7 @@ DemoMap::DemoMap() :Map(30, 15){
 	set_tile(9, 1, &s);
 	set_tile(9, 0, &s);
 
-	Item sword, armor;
+	Item sword, armor, potion;
 
 	sword.set_name("Iron Sword");
 	sword.set_desc("A simple sword made of iron.");
@@ -46,11 +46,17 @@ DemoMap::DemoMap() :Map(30, 15){
 	armor.add_attribute("Type", "Armor");
 	armor.add_attribute("Protection", "20");
 
+	potion.set_name("Health Potion");
+	potion.set_desc("A bottle containing red liquid");
+	potion.add_attribute("Type", "Consumable");
+	potion.add_attribute("Regen", "4");
+
 	c = Chest();
 	c.add_item(sword);
 	c.add_item(armor);
+	c.add_item(potion);
 
-	set_tile(1, 1, &c);
+	set_tile(1, 0, &c);
 
 	e = Enemy();
 	e.set_char('A');
@@ -59,6 +65,10 @@ DemoMap::DemoMap() :Map(30, 15){
 	e.set_y(1);
 	e.set_ai(2);
 	e.set_name("Jeff");
+	e.set_cutscene("Jeff.txt", 40, 16);
+	e.set_max_hp(30);
+	e.set_hp(30);
+
 
 	add_entity(&e);
 

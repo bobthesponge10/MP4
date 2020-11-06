@@ -4,12 +4,18 @@
 #include <thread>
 #include <vector>
 #include <chrono>
+#include <string>
+
+#include "Functions.h"
 using namespace std;
 using namespace chrono;
 using namespace this_thread;
 class Cutscene {
 	public:
-		Cutscene(string f, int s, int h);
+		Cutscene();
+		Cutscene(string f, int s, int h, int w);
+		int get_width();
+		int get_height();
 		void video();
 		void next();
 		void displayFrame(int f);
@@ -17,5 +23,5 @@ class Cutscene {
 		string file;
 		vector<string> frames;
 		fstream newfile;
-		int second, height, current;
+		int second, height, width, current;
 };
