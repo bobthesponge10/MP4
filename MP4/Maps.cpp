@@ -53,7 +53,6 @@ DemoMap::DemoMap() :Map(30, 15){
 
 	c = Chest();
 	c.add_item(sword);
-	c.add_item(armor);
 	c.add_item(potion);
 
 	set_tile(1, 0, &c);
@@ -68,9 +67,11 @@ DemoMap::DemoMap() :Map(30, 15){
 	e.set_cutscene("Jeff.txt", 40, 16);
 	e.set_max_hp(30);
 	e.set_hp(30);
-
+	e.add_item(armor);
 
 	add_entity(&e);
+
+	set_default_coords(2, 1);
 
 	//c.print_items();
 }

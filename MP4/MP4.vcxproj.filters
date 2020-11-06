@@ -97,5 +97,8 @@
     <Text Include="Jeff.txt">
       <Filter>Cutscenes</Filter>
     </Text>
+    <Text Include="rick.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
   </ItemGroup>
 </Project>

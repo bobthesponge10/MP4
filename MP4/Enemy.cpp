@@ -78,9 +78,16 @@ void Enemy::view(){
 	if(cut.get_height()>0){
 		cut.displayFrame(current_frame);
 	}
+	reset_colors();
 }
 void Enemy::battle_turn(Player* p){
+	int damage = 5;
 
+	int d = damage - damage * (p->get_protection()/100.0);
+
+	print_text(get_name() + " did " + to_string(d) + " damage\n\n");
+	p->set_hp(p->get_hp()-d);
+	wait_for_input();
 }
 
 void Enemy::set_cutscene(string file, int w, int s){

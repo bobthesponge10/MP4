@@ -8,15 +8,15 @@ const vector<string> left_      {"a", "left"};
 const vector<string> right_     {"d", "right"};
 
 const vector<string> inventory_ {"i", "inventory", "inv"};
-const vector<string> view_      {"v", "view", "interact"};
-const vector<string> stats_     {"stats"};
+const vector<string> view_      {"v", "view", "interact", "see"};
+const vector<string> stats_     {"stats", "stat"};
 
 const vector<string> get_       {"g", "get", "take", "grab"};
 const vector<string> put_       {"p", "put", "place"};
 const vector<string> fight_     {"f", "fight", "battle", "attack"};
 
 const vector<string> equip_     {"e", "equip"};
-const vector<string> unequip_   {"unequip"};
+const vector<string> unequip_   {"ue", "unequip"};
 const vector<string> weapon_    {"w", "weapon"};
 const vector<string> armor_     {"a", "armor"};
 const vector<string> flee_      {"flee", "escape", "run"};
@@ -162,7 +162,7 @@ void Player::fight(int x, int y){
 			damage = get_damage();
 			enemy->set_hp(enemy->get_hp() - damage);
 
-			print_text("You did " + to_string(damage) + " damage to " + enemy->get_name() + "\n");
+			print_text("You did " + to_string(damage) + " damage to " + enemy->get_name() + "\n\n");
 			wait_for_input();
 
 			enemy_attack = true;
@@ -207,6 +207,14 @@ void Player::fight(int x, int y){
 		if(enemy->get_hp()<=0){
 			enemy->die();
 			print_text("You defeated " + enemy->get_name() + "\n\n");
+			if(enemy->set_inv_size()>0){
+				enemy->set_inv_name("You got");
+				enemy->print_items();
+			}
+			for(int i = 0; i < enemy->set_inv_size(); i++){
+				add_item(enemy->get_item(0));
+				enemy->remove_item(0);
+			}
 			fight_happening = false;
 			wait_for_input();
 		}
@@ -216,7 +224,13 @@ void Player::fight(int x, int y){
 			enemy->battle_turn(this);
 		}
 
-	
+		if(hp <= 0){
+			print_text(enemy->get_name() + " killed you\n\n");
+			get_map()->add_flag("die");
+			fight_happening = false;
+			wait_for_input();
+		}
+
 	}
 }
 void Player::parse_input(string input){
@@ -412,4 +426,14 @@ int Player::get_protection(){
 		return i;
 	}
 	return i;
+}
+void Player::set_hp(int a){
+	if(a < 0){
+		hp = 0;
+		return;
+	}
+	hp = a;
+}
+int Player::get_hp(){
+	return hp;
 }

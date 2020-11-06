@@ -10,6 +10,8 @@ using namespace std;
 
 class Enemy;
 
+class Item;
+
 class Player : public Entity, public Inventory{
 public:
 	Player();
@@ -28,6 +30,8 @@ public:
 	void equip_weapon(int index);
 	int get_damage();
 	int get_protection();
+	void set_hp(int a);
+	int get_hp();
 private:
 	Item armor;
 	Item weapon;

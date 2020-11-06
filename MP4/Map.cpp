@@ -5,6 +5,8 @@
 Map::Map(){
 	// Sets basic values for an empty map
 	w = 0; h = 0;
+	d_x = 0; d_y = 0;
+	player = NULL;
 }
 Map::Map(int w_, int h_){
 
@@ -19,6 +21,10 @@ Map::Map(int w_, int h_){
 
 	// Sets the empty to be solid
 	empty.set_solid(true);
+
+	// Sets default coords to 0, 0 and player pointer to NULL
+	d_x = 0; d_y = 0;
+	player = NULL;
 }
 Tile* Map::get_tile_p(int x, int y){
 	
@@ -189,4 +195,22 @@ string Map::render(int x, int y, int w_, int h_, bool out){
 		cout << s;
 	}
 	return s;
+}
+
+void Map::set_player(Entity* p){
+	if(player==NULL){
+		add_entity(p);
+	}
+	player = p;
+	p->set_map(this);
+}
+
+void Map::set_default_coords(int x, int y){
+	d_x = x;
+	d_y = y;
+}
+
+void Map::move_player(){
+	player->set_x(d_x);
+	player->set_y(d_y);
 }

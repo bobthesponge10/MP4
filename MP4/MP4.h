@@ -1,10 +1,10 @@
 #pragma once
 using namespace std;
+#include "Entity.h"
 #include "Player.h"
 #include "Tile.h"
 #include "Functions.h"
 #include "Structures.h"
-#include "Entity.h"
 #include "Map.h"
 #include "Item.h"
 #include "Tiles.h"

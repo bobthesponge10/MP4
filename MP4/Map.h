@@ -6,6 +6,8 @@ using namespace std;
 
 class Entity;
 
+class Tile;
+
 class Map{
 public:
 	Map();
@@ -24,11 +26,15 @@ public:
 	vector<string> get_flags();
 	void render();
 	string render(int x, int y, int w_, int h_, bool out);
+	void set_player(Entity* p);
+	void set_default_coords(int x, int y);
+	void move_player();
 private:
-	int w;
-	int h;
+	int w, h;
+	int d_x, d_y;
 	vector<Tile*> tiles;
 	vector<Entity*> entities;
+	Entity* player;
 	Tile empty = Tile();
 	vector<string> flags;
 };

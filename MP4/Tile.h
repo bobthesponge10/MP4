@@ -5,6 +5,8 @@ using namespace std;
 #include <iostream>
 #include <string>
 
+class Color;
+
 class Tile{
 public:
 	Tile();

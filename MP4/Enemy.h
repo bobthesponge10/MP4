@@ -2,10 +2,11 @@
 #include "Entity.h"
 #include "Player.h"
 #include "Cutscene.h"
+#include "Structures.h"
 
 class Player;
 
-class Enemy : public Entity{
+class Enemy : public Entity, public Inventory{
 public:
 	Enemy();
 	int get_hp();
