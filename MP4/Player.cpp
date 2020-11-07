@@ -26,6 +26,7 @@ const vector<string> use_		{"use", "item"};
 Player::Player(){
 	set_char('@');
 	set_fg(Color(0, 0, 255));
+	set_type("player");
 	set_inv_name("Inventory");
 	max_hp = 10;
 	hp = max_hp;
@@ -40,11 +41,52 @@ void Player::view_tile(int x, int y){
 		c->print_items();
 		wait_for_input();
 	}
+	else if(type == "heal_station"){
+		hp = max_hp;
+		print_text("Healed to full health\n\n");
+		wait_for_input();
+	}
 	int i = get_map()->find_entity(x, y);
 	if(i != -1){
 		Entity* e = get_map()->get_entity(i);
 		if(e->get_type() == "enemy"){
-			print_text("----Enemy----\nName: " + e->get_name() + "\n\n");
+			Enemy* en = (Enemy*)e;
+			print_text("----Enemy----\n");
+			print_text("Name:   " + en->get_name() + "\n");
+			print_text("Health: " + to_string(en->get_hp()) + "/" + to_string(en->get_max_hp()) + "\n");
+			print_text("-------------\n\n");
+			wait_for_input();
+		}
+		else if(e->get_type() == "enemy_gate"){
+			print_text("Defeat all enemies to open the gate.\n\n");
+			wait_for_input();
+		}
+		else if(e->get_type() == "key_gate"){
+			KeyGate* en = (KeyGate*)e;
+			Item key = en->get_key();
+			int index = -1;
+			for(int i = 0; i < get_inv_size(); i++){
+				if(key.is_equal(get_item(i))){
+					index = i;
+				}
+			}
+			if(index == -1){
+				print_text(key.get_name() + " needed to open the gate\n\n");
+				wait_for_input();
+			}else{
+				print_text("Used " + key.get_name() + " to open the gate\n\n");
+				en->open_gate();
+				if(en->get_use_item()){
+					remove_item(index);
+				}
+				wait_for_input();
+			}
+		}
+		else if(e->get_type() == "sign"){
+			Sign* en = (Sign*)e;
+			print_text("----Sign----\n");
+			print_text(en->get_text() + "\n");
+			print_text("------------\n\n");
 			wait_for_input();
 		}
 	}
@@ -175,7 +217,7 @@ void Player::fight(int x, int y){
 
 			enemy_attack = true;
 		} 
-		else if(contains(inp, use_) && set_inv_size() == 0){
+		else if(contains(inp, use_) && get_inv_size() == 0){
 			print_text("Your inventory is empty\n\n");
 			wait_for_input();
 		}
@@ -188,7 +230,7 @@ void Player::fight(int x, int y){
 			ss >> index;
 			ss.clear();
 
-			if(index >= 0 && index < set_inv_size()){
+			if(index >= 0 && index < get_inv_size()){
 				if(use_item(index, enemy)){
 					enemy_attack = true;
 				}else{
@@ -216,11 +258,11 @@ void Player::fight(int x, int y){
 			print_enemy(enemy);
 			enemy->die();
 			print_text("You defeated " + enemy->get_name() + "\n\n");
-			if(enemy->set_inv_size()>0){
+			if(enemy->get_inv_size()>0){
 				enemy->set_inv_name("You got");
 				enemy->print_items();
 			}
-			for(int i = 0; i < enemy->set_inv_size(); i++){
+			for(int i = 0; i < enemy->get_inv_size(); i++){
 				add_item(enemy->get_item(0));
 				enemy->remove_item(0);
 			}
@@ -309,6 +351,10 @@ void Player::parse_input(string input){
 			print_text("Damage:     " + to_string(damage) + "\n");
 			print_text("Protection: " + to_string(prot) + "\n");
 			print_text("-------------------------\n\n");
+			wait_for_input();
+		}
+		else if(contains(args[0], help_)){
+			print_text("Good luck\n\n");
 			wait_for_input();
 		}
 	}

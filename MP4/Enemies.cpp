@@ -6,7 +6,7 @@ Enemy_Jeff::Enemy_Jeff(): Enemy(){
 	set_x(7);
 	set_y(1);
 	set_ai(2);
-	set_name("Jeff");
+	set_name("Linus");
 	set_cutscene("Jeff2.ans", 40, 16);
 	set_max_hp(10);
 	set_hp(10);

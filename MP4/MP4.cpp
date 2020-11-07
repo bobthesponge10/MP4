@@ -6,9 +6,9 @@ int main(){
 	string inp;
 
 	print_text("Loading . . .\n");
-	Cutscene Title = Cutscene("Title.txt", 500, 1, 30);
+	Cutscene Title = Cutscene("Title.txt", 1000/ 5, 1, 30);
 	Cutscene BadEnd = Cutscene("rick.txt", 1000 / 25, 1, 30);
-	
+
 	clear_screen();
 	Title.video(false);
 	wait_for_input();

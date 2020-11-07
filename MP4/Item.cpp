@@ -35,3 +35,14 @@ string Item::get_display(string s_){
 	}
 	return s;
 }
+bool Item::is_equal(Item a){
+	if(name != a.get_name()){ return false; }
+
+	if(desc != a.get_desc()){ return false; }
+
+	for(auto const& element : attributes){
+		if(a.get_attribute(element.first)!=element.second){ return false; }
+	}
+
+	return true;
+}

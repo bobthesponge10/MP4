@@ -44,6 +44,6 @@ void Inventory::set_inv_name(string name){
 string Inventory::get_inv_name(){
 	return inventory_name;
 }
-int Inventory::set_inv_size(){
+int Inventory::get_inv_size(){
 	return inventory.size();
 }

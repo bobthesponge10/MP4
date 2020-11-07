@@ -29,3 +29,11 @@ Chest::Chest(){
 	set_type("chest");
 	set_inv_name("Chest");
 }
+
+HealStation::HealStation(){
+	set_char('+');
+	set_fg(Color(255, 255, 255));
+	set_bg(Color(255, 0, 0));
+	set_solid(true);
+	set_type("heal_station");
+}

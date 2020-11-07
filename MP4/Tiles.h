@@ -20,5 +20,9 @@ public:
 class Chest : public Tile, public Inventory{
 public:
 	Chest();
-private:
+};
+
+class HealStation : public Tile{
+public:
+	HealStation();
 };

@@ -22,8 +22,10 @@ public:
 	Color get_bg();
 	void set_x(int x_);
 	void set_y(int y_);
+	void set_coords(int x_, int y_);
 	int get_x();
 	int get_y();
+	void set_render_background(bool b);
 	void set_map(Map* m);
 	Map* get_map();
 	void set_type(string t);
@@ -41,6 +43,7 @@ private:
 	int y;
 	Color f_color;
 	Color b_color;
+	bool b_c;
 	Map* map = NULL;
 	string type;
 	string name;

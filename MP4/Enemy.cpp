@@ -96,3 +96,6 @@ void Enemy::set_cutscene(string file, int w, int s){
 int Enemy::get_width(){
 	return cut.get_width();
 }
+bool Enemy::is_alive(){
+	return alive;
+}

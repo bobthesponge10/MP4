@@ -24,6 +24,7 @@ public:
 	void battle_turn(Player* p);
 	void set_cutscene(string file, int w, int s);
 	int get_width();
+	bool is_alive();
 private:
 	int ai;
 	int hp;

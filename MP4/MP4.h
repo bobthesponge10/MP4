@@ -11,6 +11,7 @@ using namespace std;
 #include "Enemy.h"
 #include "Maps.h"
 #include "Cutscene.h"
+#include "Entities.h"
 
 #include <iostream>
 #include <string>

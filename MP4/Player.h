@@ -7,6 +7,7 @@ using namespace std;
 #include "Structures.h"
 #include "Tiles.h"
 #include "Enemy.h"
+#include "Entities.h"
 
 class Enemy;
 

@@ -16,6 +16,7 @@ public:
 	string get_display(string s);
 	void add_attribute(string key, string value);
 	string get_attribute(string key_);
+	bool is_equal(Item a);
 private:
 	string name;
 	string desc;
