@@ -40,6 +40,14 @@ void Player::view_tile(int x, int y){
 		c->print_items();
 		wait_for_input();
 	}
+	int i = get_map()->find_entity(x, y);
+	if(i != -1){
+		Entity* e = get_map()->get_entity(i);
+		if(e->get_type() == "enemy"){
+			print_text("----Enemy----\nName: " + e->get_name() + "\n\n");
+			wait_for_input();
+		}
+	}
 }
 void Player::get_item_from_tile(int x, int y, int index){
 	Tile* t = get_map()->get_tile_p(x, y);
@@ -73,11 +81,6 @@ void Player::put_item_to_tile(int x, int y, int index){
 			print_text("Incorrect index of item in inventory.\n\n");
 			wait_for_input();
 		}
-	}
-	int i = get_map()->find_entity(x, y);
-	if(i != -1){
-		Entity* e = get_map()->get_entity(i);
-	
 	}
 }
 bool Player::use_item(int index, Enemy* e){

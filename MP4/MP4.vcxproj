@@ -171,6 +171,7 @@
   <ItemGroup>
     <Text Include="Jeff.txt" />
     <Text Include="rick.txt" />
+    <Text Include="Title.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeff2.ans" />

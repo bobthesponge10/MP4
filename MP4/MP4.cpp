@@ -2,14 +2,16 @@
 
 
 int main(){
-	print_text("Loading . . .\n");
-	Cutscene BadEnd = Cutscene("rick.txt", 1000 / 25, 1, 30);
-
-
 	vector<string> flags;
 	string inp;
 
+	print_text("Loading . . .\n");
+	Cutscene Title = Cutscene("Title.txt", 500, 1, 30);
+	Cutscene BadEnd = Cutscene("rick.txt", 1000 / 25, 1, 30);
 	
+	clear_screen();
+	Title.video(false);
+	wait_for_input();
 
 	Player p = Player();
 	DemoMap test = DemoMap();

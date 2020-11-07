@@ -40,6 +40,15 @@ void Cutscene::video() {
 	clear_screen();
 }
 
+void Cutscene::video(bool clear){
+	for(int i = 0; i < int(frames.size()); i++){
+		displayFrame(i);
+		sleep_for(milliseconds(second));
+	}
+	if(clear)
+	clear_screen();
+}
+
 void Cutscene::next() {
 	displayFrame(current++);
 }

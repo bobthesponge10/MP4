@@ -17,6 +17,7 @@ class Cutscene {
 		int get_width();
 		int get_height();
 		void video();
+		void video(bool clear);
 		void next();
 		void displayFrame(int f);
 	private:
