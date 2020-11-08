@@ -32,41 +32,67 @@ int main(){
 	// Creates an instance of a player
 	Player p = Player();
 
-	// 
+	// Creates levels
 	DemoMap test = DemoMap();
 	Level1 l1 = Level1();
 	Level2 l2 = Level2();
 	Level3 l3 = Level3();
 
+	// Creates a vector to hold all the levels
 	vector<Map*> maps{&l1, &l2, &l3, &test};
 
+	// Sets the current map
 	Map* m = maps[2];
 
-
+	// Sets the player to the first map
 	m->set_player(&p);
 	m->move_player();
 
+	// Starts the main loop
 	while(true){
+
+		// Updates the map and renders the area around the player
 		m->update();
 		p.render_window(45, 15, true);
+
+		// Sets the colors back to normal and gets input from the player
 		reset_colors();
 		cout << ":";
 		getline(cin, inp);
 		p.parse_input(inp);
+
+		// Gets flags from the current map
 		flags = m->get_flags();
+
+		// Loops over all the flags
 		for(int i = 0; i < flags.size(); i++){
+
+			// Checks if the player died
 			if(flags[i] == "die"){
+
+				// Clears screen, plays death animation and closes the program
 				clear_screen();
 				BadEnd.video();
 				wait_for_input();
 				return 0;
 			}
+
+			// checks if the player wins
 			else if(flags[i] == "win"){
+
 			}
+
+			// Checks if the level changed
 			else if(flags[i].substr(0,1) == "m"){
+
+				// Sets the current map to the new level
 				Map* m = maps[stoi(flags[i].substr(1,1))];
+
+				// Moves the player to the new location
 				m->set_player(&p);
 				m->move_player();
+
+				// Plays the telport cutscene
 				Teleport.video(true);
 			}
 		}
