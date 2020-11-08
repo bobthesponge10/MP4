@@ -21,6 +21,13 @@ StoneBrick::StoneBrick(){
 	set_solid(true);
 }
 
+Stone::Stone(){
+	set_char(' ');
+	set_fg(Color(150, 150, 150));
+	set_bg(Color(183, 190, 235));
+	set_solid(false);
+}
+
 Chest::Chest(){
 	set_char(240);
 	set_fg(Color(0, 0, 0));
@@ -36,4 +43,18 @@ HealStation::HealStation(){
 	set_bg(Color(255, 0, 0));
 	set_solid(true);
 	set_type("heal_station");
+}
+
+Portal::Portal(){
+	set_char('0');
+	set_fg(Color(255, 0, 255));
+	set_bg(Color(0, 0, 0));
+	set_solid(true);
+	set_type("portal");
+}
+int Portal::get_index(){
+	return index;
+}
+void Portal::set_index(int i){
+	index = i;
 }

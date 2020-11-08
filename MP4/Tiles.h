@@ -17,6 +17,11 @@ public:
 	StoneBrick();
 };
 
+class Stone : public Tile{
+public:
+	Stone();
+};
+
 class Chest : public Tile, public Inventory{
 public:
 	Chest();
@@ -25,4 +30,13 @@ public:
 class HealStation : public Tile{
 public:
 	HealStation();
+};
+
+class Portal : public Tile{
+public:
+	Portal();
+	void set_index(int i);
+	int get_index();
+private:
+	int index;
 };

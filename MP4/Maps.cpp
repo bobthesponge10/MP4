@@ -62,6 +62,7 @@ DemoMap::DemoMap() :Map(30, 15){
 	set_tile(1, 0, &c);
 
 	e = Enemy_Jeff();
+	e.set_coords(7, 1);
 	e.add_item(armor);
 
 	add_entity(&e);
@@ -88,4 +89,383 @@ DemoMap::DemoMap() :Map(30, 15){
 	add_entity(&si);
 
 	set_default_coords(2, 1);
+}
+
+Level1::Level1() :Map(20, 20){
+
+	// Sets Walls and floor
+	{
+		for(int y = 0; y < get_h(); y++){
+			for(int x = 0; x < get_w(); x++){
+				if(y == 0 || x == 0 || y == get_h()-1 || x == get_w() - 1){
+					set_tile(x, y, &s);
+				}else{
+					set_tile(x, y, &st);
+				}
+			}
+		}
+		set_tile(8, 1, &s);
+		set_tile(8, 2, &s);
+		set_tile(8, 3, &s);
+		set_tile(8, 4, &s);
+
+		set_tile(10, 2, &s);
+		set_tile(10, 3, &s);
+		set_tile(10, 4, &s);
+		set_tile(10, 5, &s);
+
+		for(int i = 0; i < 13; i++){
+			set_tile(1 + i, 6, &s);
+		}
+
+		set_tile(16, 6, &s);
+		set_tile(17, 6, &s);
+		set_tile(18, 6, &s);
+		set_tile(19, 6, &s);
+
+		set_tile(0, 10, &s);
+		set_tile(1, 10, &s);
+		set_tile(2, 10, &s);
+		set_tile(3, 10, &s);
+
+		for(int i = 0; i < 14; i++){
+			set_tile(5 + i, 10, &s);
+		}
+
+		set_tile(17, 15, &s);
+		set_tile(17, 16, &s);
+		set_tile(17, 17, &s);
+		set_tile(17, 18, &s);
+	}
+
+	// Defines Items
+	{
+		Item Sword1, Armor1, Key1, Potion1, Bomb1, Tri1;
+
+		Sword1.set_name("Rusty Sword");
+		Sword1.set_desc("An old and rusty sword");
+		Sword1.add_attribute("Damage", "3");
+		Sword1.add_attribute("Type", "Weapon");
+
+		Armor1.set_name("Worn Armor");
+		Armor1.set_desc("An old set of word down leather armor");
+		Armor1.add_attribute("Protection", "10");
+		Armor1.add_attribute("Type", "Armor");
+
+		Key1.set_name("Basic Key");
+		Key1.set_desc("A very basic key, can be used to open things");
+		Key1.add_attribute("Type", "Key");
+
+		Potion1.set_name("Small Health Potion");
+		Potion1.set_desc("A small bottle filled with a dull red liquid");
+		Potion1.add_attribute("Regen", "7");
+		Potion1.add_attribute("Type", "Consumable");
+
+		Bomb1.set_name("Small Bomb");
+		Bomb1.set_desc("A rudimentary explosive");
+		Bomb1.add_attribute("Damage", "10");
+		Bomb1.add_attribute("Type", "Consumable");
+
+		Tri1.set_name("Triforce of POWER");
+		Tri1.set_desc("TRONGLE!!");
+		Tri1.add_attribute("Type", "Artifact");
+
+		c1.add_item(Sword1);
+		c1.add_item(Key1);
+		c2.add_item(Potion1);
+		c3.add_item(Bomb1);
+		c4.add_item(Armor1);
+
+		k1.set_open_key(Key1);
+		k2.set_open_key(Tri1);
+
+		g1.add_item(Potion1);
+		b1.add_item(Tri1);
+	}
+
+	// Sets Heal Station
+	{
+		set_tile(17, 8, &hp);
+	}
+
+	// Sets Chests
+	{
+		set_tile(1, 5, &c1);
+		set_tile(1, 7, &c2);
+		set_tile(1, 8, &c3);
+		set_tile(1, 9, &c4);
+	}
+
+	// Sets Signs
+	{	
+		s1.set_coords(7, 4);
+		s1.set_text("Danger Goat Ahead");
+		add_entity(&s1);
+	}
+
+	// Sets Gates
+	{
+		k1.set_gate(false);
+		k1.set_coords(8, 5);
+		k1.set_use_item(true);
+		add_entity(&k1);
+
+		k2.set_gate(false);
+		k2.set_coords(18, 15);
+		k2.set_use_item(false);
+		add_entity(&k2);
+
+		e1.set_gate(true);
+		e1.set_coords(10, 1);
+		e1.set_close_right(true);
+		add_entity(&e1);
+
+		e2.set_gate(true);
+		e2.set_coords(4, 10);
+		e2.set_close_down(true);
+		add_entity(&e2);
+
+		e3.set_gate(false);
+		e3.set_coords(14, 6);
+		e3.add_open_enemy(&g1);
+		add_entity(&e3);
+
+		e4.set_gate(false);
+		e4.set_coords(15, 6);
+		e4.add_open_enemy(&g1);
+		add_entity(&e4);
+	}
+
+	// Sets portal
+	{
+		p1.set_index(1);
+		set_tile(18, 18, &p1);
+	}
+
+	// Sets enemies
+	{
+		g1.set_coords(15, 3);
+		add_entity(&g1);
+
+		b1.set_coords(13, 14);
+		add_entity(&b1);
+	}
+
+	// Sets players starting position
+	set_default_coords(1, 1);
+}
+
+Level2::Level2(): Map(52, 28){
+	s.set_bg(Color(112, 28, 42));
+	st.set_bg(Color(207, 107, 124));
+
+	// Sets Walls and floor
+	{
+		for(int y = 0; y < get_h(); y++){
+			for(int x = 0; x < get_w(); x++){
+				if(y == 0 || x == 0 || y == get_h() - 1 || x == get_w() - 1){
+					set_tile(x, y, &s);
+				} else{
+					set_tile(x, y, &st);
+				}
+			}
+		}
+
+		for(int i = 0; i < 48; i++){
+			set_tile(2+i, 2, &s);
+		}
+
+		set_tile(4, 3, &s);
+		set_tile(4, 4, &s);
+		set_tile(4, 5, &s);
+		set_tile(3, 5, &s);
+		set_tile(2, 5, &s);
+
+		set_tile(47, 3, &s);
+		set_tile(47, 4, &s);
+		set_tile(47, 5, &s);
+		set_tile(48, 5, &s);
+		set_tile(49, 5, &s);
+
+		for(int i = 0; i < 7; i++){
+			set_tile(i + 1, 8, &s);
+			set_tile(i + 44, 8, &s);
+		}
+		set_tile(7, 7, &s);
+		set_tile(7, 6, &s);
+		set_tile(44, 7, &s);
+		set_tile(44, 6, &s);
+
+		for(int i = 0; i < 38; i++){
+			set_tile(i + 7, 5, &s);
+		}
+
+		set_tile(27, 5, &st);
+
+		set_tile(25, 24, &s);
+		set_tile(26, 24, &s);
+		set_tile(28, 24, &s);
+		set_tile(29, 24, &s);
+
+		set_tile(25, 25, &s);
+		set_tile(25, 26, &s);
+
+		set_tile(29, 25, &s);
+		set_tile(29, 26, &s);
+
+		set_tile(18, 2, &st);
+		set_tile(17, 3, &s);
+		set_tile(18, 3, &s);
+		set_tile(19, 3, &s);
+	}
+
+	// Defines Items
+	{
+		sword1.set_name("Iron Sword");
+		sword1.set_desc("A sturdy sword made of iron");
+		sword1.add_attribute("Damage", "7");
+		sword1.add_attribute("Type", "Weapon");
+
+		armor1.set_name("Iron Armor");
+		armor1.set_desc("A strong armor made of iron");
+		armor1.add_attribute("Protection", "25");
+		armor1.add_attribute("Type", "Armor");
+
+		potion1.set_name("Medium Health Potion");
+		potion1.set_desc("A medium bottle filled with a bright red liquid");
+		potion1.add_attribute("Regen", "12");
+		potion1.add_attribute("Type", "Consumable");
+
+		bomb1.set_name("Medium Bomb");
+		bomb1.set_desc("A medium sized bomb");
+		bomb1.add_attribute("Damage", "15");
+		bomb1.add_attribute("Type", "Consumable");
+
+		tri2.set_name("Triforce of COURAGE");
+		tri2.set_desc("TRINGLE!?!");
+		tri2.add_attribute("Type", "Artifact");
+
+		k1.set_open_key(tri2);
+	}
+
+	// Sets Health Station
+	{
+		set_tile(8, 6, &hp);
+	}
+
+	// Sets Chests
+	{
+		c1.add_item(sword1);
+		c1.add_item(potion1);
+		set_tile(3, 3, &c1);
+
+		c2.add_item(armor1);
+		c2.add_item(bomb1);
+		set_tile(48, 3, &c2);
+	}
+
+	// Sets Signs
+	{
+		s1.set_text("Head down and to the right.");
+		s1.set_coords(3, 4);
+		add_entity(&s1);
+
+		s2.set_text("Head down and to the left.");
+		s2.set_coords(48, 4);
+		add_entity(&s2);
+
+		s3.set_text("He draws strength from his minions.");
+		s3.set_coords(27, 3);
+		add_entity(&s3);
+
+		s4.set_text("Will you go left or right\nit's your choice");
+		s4.set_coords(18, 2);
+		add_entity(&s4);
+	}
+
+	// Sets Gates
+	{
+		e1.set_gate(true);
+		e1.set_coords(1, 2);
+		e1.set_close_down(true);
+		add_entity(&e1);
+
+		e2.set_gate(true);
+		e2.set_coords(1, 5);
+		e2.set_close_down(true);
+		add_entity(&e2);
+
+		e3.set_gate(true);
+		e3.set_coords(50, 2);
+		e3.set_close_down(true);
+		add_entity(&e3);
+
+		e4.set_gate(true);
+		e4.set_coords(50, 5);
+		e4.set_close_down(true);
+		add_entity(&e4);
+
+		e5.set_gate(true);
+		e5.set_coords(27, 5);
+		e5.set_close_down(true);
+		add_entity(&e5);
+
+		k1.set_gate(false);
+		k1.set_coords(27, 24);
+		add_entity(&k1);
+	}
+
+	// Sets Portal
+	{
+		p1.set_index(2);
+		set_tile(27, 26, &p1);
+	}
+
+	// Sets Enemies
+	{
+		m1.set_coords(14, 8);
+		add_entity(&m1);
+
+		m2.set_coords(39, 8);
+		add_entity(&m2);
+
+		m3.set_coords(3, 12);
+		add_entity(&m3);
+
+		m4.set_coords(48, 12);
+		add_entity(&m4);
+
+		g1.set_coords(27, 20);
+		g1.set_coords(1, 1);
+		g1.add_minion(&m1);
+		g1.add_minion(&m2);
+		g1.add_minion(&m3);
+		g1.add_minion(&m4);
+		add_entity(&g1);
+	}
+
+	// Set players starting position
+	set_default_coords(18, 1);
+}
+
+Level3::Level3(): Map(20, 20){
+
+	// Sets Walls and floor
+	{
+		for(int y = 0; y < get_h(); y++){
+			for(int x = 0; x < get_w(); x++){
+				if(y == 0 || x == 0 || y == get_h() - 1 || x == get_w() - 1){
+					set_tile(x, y, &s);
+				} else{
+					set_tile(x, y, &st);
+				}
+			}
+		}
+
+
+
+	}
+
+	// Set players starting position
+	set_default_coords(1, 1);
 }

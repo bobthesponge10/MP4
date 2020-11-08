@@ -15,6 +15,7 @@ public:
 	void set_close_down(bool b);
 	void set_close_left(bool b);
 	void set_close_right(bool b);
+	int get_size();
 	void update();
 private:
 	bool open;

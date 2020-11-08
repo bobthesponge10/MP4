@@ -115,6 +115,21 @@
     <Text Include="Title.txt">
       <Filter>Cutscenes</Filter>
     </Text>
+    <Text Include="portal.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="goomba.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="goat.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="minion.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="gru.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeff2.ans">

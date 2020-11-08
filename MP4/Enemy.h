@@ -14,6 +14,8 @@ public:
 	int get_ai();
 	void set_max_hp(int a);
 	int get_max_hp();
+	void set_damage(int i);
+	int get_damage();
 	void set_escape_chance(int a);
 	int get_escape_chance();
 	void set_ai(int a);
@@ -21,7 +23,7 @@ public:
 	void update();
 	void die();
 	void view();
-	void battle_turn(Player* p);
+	virtual void battle_turn(Player* p);
 	void set_cutscene(string file, int w, int s);
 	int get_width();
 	bool is_alive();
@@ -34,6 +36,7 @@ private:
 	Cutscene cut;
 	int current_frame;
 
+	int damage;
 	int y_v;
 	int x_v;
 	bool alive;

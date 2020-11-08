@@ -2,6 +2,7 @@
 
 
 Enemy::Enemy(){
+	damage = 0;
 	hp = -1;
 	max_hp = -1;
 	ai = 0;
@@ -16,7 +17,16 @@ int Enemy::get_hp(){
 	return hp;
 }
 void Enemy::set_hp(int a){
+	if(a < 0){
+		a = 0;
+	}
 	hp = a;
+}
+void Enemy::set_damage(int i){
+	damage = i;
+}
+int Enemy::get_damage(){
+	return damage;
 }
 int Enemy::get_max_hp(){
 	return max_hp;
@@ -81,8 +91,6 @@ void Enemy::view(){
 	reset_colors();
 }
 void Enemy::battle_turn(Player* p){
-	int damage = 5;
-
 	int d = damage - damage * (p->get_protection()/100.0);
 
 	print_text(get_name() + " did " + to_string(d) + " damage\n\n");

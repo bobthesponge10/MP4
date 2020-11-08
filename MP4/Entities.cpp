@@ -8,9 +8,7 @@ EnemyGate::EnemyGate(){
 	set_y(-1);
 	set_char('#');
 	set_type("enemy_gate");
-	set_fg(Color(0,255,255));
-	set_bg(Color(0, 0, 0));
-	set_render_background(true);
+	set_fg(Color(0,0,0));
 	close_down = false;
 	close_up = false;
 	close_left = false;
@@ -37,6 +35,9 @@ void EnemyGate::set_close_left(bool b){
 }
 void EnemyGate::set_close_right(bool b){
 	close_right = b;
+}
+int EnemyGate::get_size(){
+	return open_condition.size();
 }
 void EnemyGate::update(){
 	Map* m = get_map();
@@ -85,9 +86,7 @@ KeyGate::KeyGate(){
 	set_y(-1);
 	set_char('#');
 	set_type("key_gate");
-	set_fg(Color(0, 255, 255));
-	set_bg(Color(0, 0, 0));
-	set_render_background(true);
+	set_fg(Color(0, 0, 0));
 	close_down = false;
 	close_up = false;
 	close_left = false;
@@ -158,7 +157,7 @@ void KeyGate::update(){
 }
 
 Sign::Sign(){
-	set_char('7');
+	set_char(19);
 	set_fg(Color(255, 0, 255));
 	set_type("sign");
 }

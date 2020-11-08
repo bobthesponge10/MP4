@@ -8,7 +8,7 @@ const vector<string> left_      {"a", "left"};
 const vector<string> right_     {"d", "right"};
 
 const vector<string> inventory_ {"i", "inventory", "inv"};
-const vector<string> view_      {"v", "view", "interact", "see"};
+const vector<string> view_      {"v", "view", "interact", "see", "use"};
 const vector<string> stats_     {"stats", "stat"};
 
 const vector<string> get_       {"g", "get", "take", "grab"};
@@ -28,7 +28,7 @@ Player::Player(){
 	set_fg(Color(0, 0, 255));
 	set_type("player");
 	set_inv_name("Inventory");
-	max_hp = 10;
+	max_hp = 20;
 	hp = max_hp;
 }
 void Player::update(){
@@ -46,6 +46,13 @@ void Player::view_tile(int x, int y){
 		print_text("Healed to full health\n\n");
 		wait_for_input();
 	}
+	else if(type == "portal"){
+		Portal* p = (Portal*)t;
+		get_map()->add_flag("m"+to_string(p->get_index()));
+
+		print_text("Teleporting to level " + to_string(p->get_index() + 1) + "\n\n");
+		wait_for_input();
+	}
 	int i = get_map()->find_entity(x, y);
 	if(i != -1){
 		Entity* e = get_map()->get_entity(i);
@@ -58,8 +65,14 @@ void Player::view_tile(int x, int y){
 			wait_for_input();
 		}
 		else if(e->get_type() == "enemy_gate"){
-			print_text("Defeat all enemies to open the gate.\n\n");
-			wait_for_input();
+			EnemyGate* en = (EnemyGate*)e;
+			if(en->get_size() > 0){
+				print_text("Defeat all enemies to open the gate.\n\n");
+				wait_for_input();
+			}else{
+				print_text("The gate is now permanently locked.\n\n");
+				wait_for_input();
+			}
 		}
 		else if(e->get_type() == "key_gate"){
 			KeyGate* en = (KeyGate*)e;
@@ -140,6 +153,15 @@ bool Player::use_item(int index, Enemy* e){
 				used = true;
 				usedT = true;
 				hp += temp1;
+			}
+		}
+		temp2 = i.get_attribute("Damage");
+		if(temp2!=""){
+			if(is_integer(temp2)){
+				temp1 = stoi(temp2);
+				used = true;
+				usedT = true;
+				e->set_hp(e->get_hp()-temp1);
 			}
 		}
 		if(usedT){
