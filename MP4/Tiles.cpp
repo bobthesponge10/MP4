@@ -9,7 +9,7 @@ Grass::Grass(){
 
 Dirt::Dirt(){
 	set_char('*');
-	set_fg(Color(138, 75, 28));
+	set_fg(Color(138, 75, 28));				// Function call with struct
 	set_bg(Color(219, 148, 94));
 	set_solid(false);
 }

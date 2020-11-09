@@ -56,7 +56,7 @@ void Player::view_tile(int x, int y){
 	int i = get_map()->find_entity(x, y);
 	if(i != -1){
 		Entity* e = get_map()->get_entity(i);
-		if(e->get_type() == "enemy"){
+		if(e->get_type() == "enemy"){										// Nested if statement
 			Enemy* en = (Enemy*)e;
 			print_text("----Enemy----\n");
 			print_text("Name:   " + en->get_name() + "\n");

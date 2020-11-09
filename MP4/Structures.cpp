@@ -19,7 +19,7 @@ vector<Item> Inventory::get_items(){
 	return inventory;
 }
 void Inventory::print_items(){
-	display_items(inventory, inventory_name);
+	display_items(inventory, inventory_name);		// Functoin call with vector paramater
 }
 Item Inventory::get_item(int i){
 	if(i >= 0 && i < inventory.size()){

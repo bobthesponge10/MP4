@@ -15,9 +15,9 @@ class Cutscene {
 		Cutscene();
 		Cutscene(string f, int s, int h, int w);
 		int get_width();
-		int get_height();
+		int get_height();							
 		void video();
-		void video(bool clear);
+		void video(bool clear);						// Definition of function
 		void next();
 		void displayFrame(int f);
 	private:

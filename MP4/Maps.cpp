@@ -144,7 +144,7 @@ Level1::Level1() :Map(20, 20){
 
 		Sword1.set_name("Rusty Sword");
 		Sword1.set_desc("An old and rusty sword");
-		Sword1.add_attribute("Damage", "3");
+		Sword1.add_attribute("Damage", "5");
 		Sword1.add_attribute("Type", "Weapon");
 
 		Armor1.set_name("Worn Armor");
@@ -728,7 +728,7 @@ Level4::Level4(): Map(21, 20){
 	c.add_item(tri1);
 	c.add_item(tri2);
 	c.add_item(tri3);
-	set_tile(8, 13, &c);
+	//set_tile(8, 13, &c);
 
 	// Set players starting position
 	set_default_coords(10, 14);

@@ -11,7 +11,7 @@ int main(){
 
 	// Loads cutscenes
 	print_text("Loading . . .\n");
-	Cutscene Title    =  Cutscene("Title.txt",    1000 / 5,  1, 30);
+	Cutscene Title    =  Cutscene("Title.txt",    1000 / 5,  1, 30);	// Assignment statement
 	Cutscene Teleport =  Cutscene("portal.txt",   1000 / 30, 1, 30);
 	Cutscene BadEnd   =  Cutscene("rick.txt",     1000 / 25, 1, 30);
 	Cutscene YouDidIt =  Cutscene("congrats.txt", 1000 / 5,  1, 29);
@@ -19,7 +19,7 @@ int main(){
 
 	// Clears the screen and plays the intro cutscene
 	clear_screen();
-	Title.video(false);
+	Title.video(false);													// Function call with paramaters
 	wait_for_input();
 
 	// Clears the screen and gives the initial story
@@ -68,10 +68,10 @@ int main(){
 		flags = m->get_flags();
 
 		// Loops over all the flags
-		for(int i = 0; i < flags.size(); i++){
+		for(int i = 0; i < flags.size(); i++){								// While loop
 
 			// Checks if the player died
-			if(flags[i] == "die"){
+			if(flags[i] == "die"){											// If statement
 
 				// Clears screen, plays death animation and closes the program
 				clear_screen();

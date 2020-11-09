@@ -61,14 +61,14 @@ void Enemy_BossGoomba::battle_turn(Player* p){
 }
 
 Enemy_Minion::Enemy_Minion() : Enemy(){
-	set_damage(7);
+	set_damage(6);
 	set_char('M');
 	set_fg(Color(224, 224, 60));
 	set_ai(1);
 	set_name("Minion");
 	set_cutscene("minion.txt", 27, 16);
-	set_max_hp(15);
-	set_hp(15);
+	set_max_hp(12);
+	set_hp(12);
 	set_escape_chance(40);
 }
 
@@ -140,8 +140,8 @@ Enemy_Cactus::Enemy_Cactus(){
 	set_ai(0);
 	set_name("Cactus");
 	set_cutscene("cactus.txt", 21, 16);
-	set_max_hp(16);
-	set_hp(16);
+	set_max_hp(13);
+	set_hp(13);
 	set_escape_chance(40);
 }
 
@@ -165,7 +165,7 @@ void Enemy_BossGarfield::battle_turn(Player* p){
 	else if(turn == wait){
 		print_text("Garfield wakes up\n\n");
 	}else{
-		print_text("Annoyed that you woke him up from his nap, Garfield gets serious");
+		print_text("Annoyed that you woke him up from his nap, Garfield gets serious\n");
 		print_text(get_name() + " did " + to_string(get_damage()) + " damage\n\n");
 		p->set_hp(p->get_hp() - get_damage());
 	}
@@ -232,7 +232,7 @@ void Enemy_BossBAF::die(){
 bool Enemy_BossBAF::use_item(Item i){
 	if(artifacts == 0){
 		if(i.is_equal(a1)){
-			print_text("Use used the artifact against " + get_name() + " doing 333 damage\n");
+			print_text("Used the artifact against " + get_name() + " doing 333 damage\n");
 			set_hp(get_hp() - 333);
 
 			artifacts++;
@@ -241,7 +241,7 @@ bool Enemy_BossBAF::use_item(Item i){
 	}
 	else if(artifacts == 1){
 		if(i.is_equal(a2)){
-			print_text("Use used the artifact against " + get_name() + " doing 333 damage\n");
+			print_text("Used the artifact against " + get_name() + " doing 333 damage\n");
 			set_hp(get_hp() - 333);
 
 			artifacts++;
@@ -250,7 +250,7 @@ bool Enemy_BossBAF::use_item(Item i){
 	}
 	else if(artifacts == 2){
 		if(i.is_equal(a3)){
-			print_text("Use used the artifact against " + get_name() + " doing 333 damage\n");
+			print_text("Used the artifact against " + get_name() + " doing 333 damage\n");
 			set_hp(get_hp() - 333);
 
 			return true;

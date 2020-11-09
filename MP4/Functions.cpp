@@ -55,7 +55,7 @@ string fg(Color c){
 	return s;
 }
 
-void display_items(vector<Item> items, string title){
+void display_items(vector<Item> items, string title){			// Function definition with vector as paramater
 	string s = "";
 	s += "--------" + title + "--------\n";
 	for(int i = 0; i < items.size(); i++){

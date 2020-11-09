@@ -85,8 +85,8 @@ void Enemy::die(){
 	alive = false;
 }
 void Enemy::view(){
-	if(cut.get_height()>0){
-		cut.displayFrame(current_frame);
+	if(cut.get_height()>0){							// Function call returns value
+		cut.displayFrame(current_frame);			// Function call
 	}
 	reset_colors();
 }

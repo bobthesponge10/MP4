@@ -18,7 +18,7 @@ Tile::Tile(char c_, Color f_color_, Color b_color_){
 void Tile::set_char(char c_){
 	c = c_;
 }
-void Tile::set_fg(Color color_){
+void Tile::set_fg(Color color_){			// Function definition with struct parameter
 	f_color = color_;
 }
 void Tile::set_bg(Color color_){
