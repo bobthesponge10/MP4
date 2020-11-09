@@ -6,7 +6,7 @@ using namespace std;
 
 class Item;
 
-struct Color{
+struct Color{							// Structure
 	Color();
 	Color(int r_, int g_, int b_);
 	int r;
@@ -15,7 +15,7 @@ struct Color{
 };
 
 
-class Inventory{
+class Inventory{						// Class
 public:
 	Inventory();
 	vector<Item> get_items();

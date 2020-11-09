@@ -45,7 +45,7 @@ int main(){
 	vector<Map*> maps{&l1, &l2, &l3, &l4, &test};							// Vector
 
 	// Sets the current map
-	Map* m = maps[0];
+	Map* m = maps[0];														// Pointer
 
 	// Sets the player to the first map
 	m->set_player(&p);

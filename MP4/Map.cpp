@@ -109,7 +109,7 @@ bool Map::check_solid(int x, int y){
 void Map::update(){
 
 	// Loops over all the entities in the map
-	for(int i = 0; i < entities.size(); i++){
+	for(int i = 0; i < entities.size(); i++){			// Loops over vector
 
 		// Updates the entity
 		entities[i]->update();
@@ -158,7 +158,7 @@ string Map::render(int x, int y, int w_, int h_, bool out){
 	for(int i = 0; i < h_; i++){
 
 		// Loops over every coord in row
-		for(int j = 0; j < w_; j++){
+		for(int j = 0; j < w_; j++){								// Nested for loop
 
 			// Calculates the x and y coord of current tile
 			x_ = x + j;

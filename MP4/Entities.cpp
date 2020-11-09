@@ -157,8 +157,8 @@ void KeyGate::update(){
 }
 
 Sign::Sign(){
-	set_char(19);
-	set_fg(Color(255, 0, 255));
+	set_char('8');
+	set_fg(Color(107, 90, 46));
 	set_type("sign");
 }
 void Sign::set_text(string t){

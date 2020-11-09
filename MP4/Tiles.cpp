@@ -15,7 +15,7 @@ Dirt::Dirt(){
 }
 
 StoneBrick::StoneBrick(){
-	set_char(206);
+	set_char(206);							// ASCII character
 	set_fg(Color(50, 50, 50));
 	set_bg(Color(150, 150, 150));
 	set_solid(true);
@@ -31,7 +31,7 @@ Stone::Stone(){
 Chest::Chest(){
 	set_char(240);
 	set_fg(Color(0, 0, 0));
-	set_bg(Color(255, 0, 0));
+	set_bg(Color(171, 126, 3));
 	set_solid(true);
 	set_type("chest");
 	set_inv_name("Chest");
@@ -39,8 +39,8 @@ Chest::Chest(){
 
 HealStation::HealStation(){
 	set_char('+');
-	set_fg(Color(255, 255, 255));
-	set_bg(Color(255, 0, 0));
+	set_bg(Color(122, 201, 60));
+	set_fg(Color(255, 0, 0));
 	set_solid(true);
 	set_type("heal_station");
 }
@@ -48,7 +48,7 @@ HealStation::HealStation(){
 Portal::Portal(){
 	set_char('0');
 	set_fg(Color(255, 0, 255));
-	set_bg(Color(0, 0, 0));
+	set_bg(Color(89, 47, 89));
 	set_solid(true);
 	set_type("portal");
 }

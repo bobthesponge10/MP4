@@ -45,5 +45,5 @@ string Inventory::get_inv_name(){
 	return inventory_name;
 }
 int Inventory::get_inv_size(){
-	return inventory.size();
+	return inventory.size();								// Uses vector functonality
 }

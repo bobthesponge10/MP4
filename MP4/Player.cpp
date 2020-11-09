@@ -34,7 +34,7 @@ Player::Player(){
 void Player::update(){
 }
 void Player::view_tile(int x, int y){
-	Tile* t = get_map()->get_tile_p(x, y);
+	Tile* t = get_map()->get_tile_p(x, y);											// Local variable
 	string type = t->get_type();
 	if(type == "chest"){
 		Chest* c = (Chest*)t;
@@ -78,7 +78,7 @@ void Player::view_tile(int x, int y){
 			KeyGate* en = (KeyGate*)e;
 			Item key = en->get_key();
 			int index = -1;
-			for(int i = 0; i < get_inv_size(); i++){
+			for(int i = 0; i < get_inv_size(); i++){								// ++ operator
 				if(key.is_equal(get_item(i))){
 					index = i;
 				}
@@ -152,7 +152,7 @@ bool Player::use_item(int index, Enemy* e){
 				temp1 = stoi(temp2);
 				used = true;
 				usedT = true;
-				hp += temp1;
+				hp += temp1;							// += operator
 			}
 		}
 		temp2 = i.get_attribute("Damage");
@@ -274,7 +274,7 @@ void Player::fight(int x, int y){
 			wait_for_input();
 		}
 		else if(contains(inp, flee_)){
-			temp = rand() % 100 + 1;
+			temp = rand() % 100 + 1;							// Random number generator
 			success = temp <= enemy->get_escape_chance();
 			if(success){
 				print_text("You successfully escaped " + enemy->get_name() + "\n\n");
@@ -409,7 +409,7 @@ void Player::parse_input(string input){
 
 	if(args.size()>2){
 		if(contains(args[0], get_) && is_integer(args[2])){
-			index = stoi(args[2]);
+			index = stoi(args[2]);										// Conversion to int
 			get_item_from_tile(nx, ny, index);
 		}
 		else if(contains(args[0], put_) && is_integer(args[2])){
