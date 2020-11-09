@@ -1,5 +1,9 @@
+// Functions.cpp
+
 #include "Functions.h";
 
+
+// Sets console color
 void set_color(Color c, bool fg){
 	string s = "";
 
@@ -17,6 +21,7 @@ void set_color(Color c, bool fg){
 	cout << s;
 }
 
+// Resets console color
 void reset_colors(){
 	string s = "";
 	s.push_back(0x1b);
@@ -25,6 +30,7 @@ void reset_colors(){
 	cout << s;
 }
 
+// Gives console reset string
 string reset(){
 	string s = "";
 	s.push_back(0x1b);
@@ -33,6 +39,7 @@ string reset(){
 	return s;
 }
 
+// Gives string to set background
 string bg(Color c){
 	string s = "";
 
@@ -44,6 +51,7 @@ string bg(Color c){
 	return s;
 }
 
+// Gives string to set foreground
 string fg(Color c){
 	string s = "";
 
@@ -55,6 +63,7 @@ string fg(Color c){
 	return s;
 }
 
+// Displays vector of items
 void display_items(vector<Item> items, string title){			// Function definition with vector as paramater
 	string s = "";
 	s += "--------" + title + "--------\n";
@@ -66,21 +75,26 @@ void display_items(vector<Item> items, string title){			// Function definition w
 	print_text(s);
 }
 
+// prints text with waiting in between each character
 void print_text(string text){
 	for(int i = 0; i < text.length(); i++){
-		sleep(30);
-		cout << text[i];
+		sleep(20);
+		cout << text[i];										 // Uses string like array
 	}
 }
 
+// Waits for a given ammount of time
 void sleep(int milli){
 	this_thread::sleep_for(chrono::milliseconds(milli));
 }
 
+// Waits for the user to press enter
 void wait_for_input(){
 	cout << "Press enter to continue: ";
 	cin.ignore(1, '\n');
 }
+
+// Checks if string in vector
 bool contains(string key, vector<string> values){
 	for(int i = 0; i < values.size(); i++){
 		if(key==values[i]){
@@ -90,10 +104,12 @@ bool contains(string key, vector<string> values){
 	return false;
 }
 
+// Clears screen
 void clear_screen(){
 	system("CLS");
 }
 
+// Checks if string is integer
 bool is_integer(string s){
 	for(int i = 0; i < s.length(); i++)
 		if(isdigit(s[i]) == false){

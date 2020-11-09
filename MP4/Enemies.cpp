@@ -1,5 +1,8 @@
+// Enemies.cpp
+
 #include "Enemies.h"
 
+// Creates test enemy
 Enemy_Jeff::Enemy_Jeff(): Enemy(){
 	set_damage(5);
 	set_char('A');
@@ -11,10 +14,11 @@ Enemy_Jeff::Enemy_Jeff(): Enemy(){
 	set_hp(10);
 }
 
+// Creates goat enemy
 Enemy_Goat::Enemy_Goat(): Enemy(){
 	set_damage(5);
 	set_char('G');
-	set_fg(Color(224, 191, 122));
+	set_fg(Color(112, 80, 4));
 	set_ai(1);
 	set_name("Goat");
 	set_cutscene("goat.txt", 40, 16);
@@ -22,6 +26,7 @@ Enemy_Goat::Enemy_Goat(): Enemy(){
 	set_hp(10);
 }
 
+// Creates goomba boss
 Enemy_BossGoomba::Enemy_BossGoomba(): Enemy(){
 	set_damage(5);
 	set_char('G');
@@ -34,8 +39,12 @@ Enemy_BossGoomba::Enemy_BossGoomba(): Enemy(){
 	turn = 0;
 	set_escape_chance(0);
 }
+
+// Sets boss goombas attack pattern
 void Enemy_BossGoomba::battle_turn(Player* p){
 	int d;
+
+	// Does a different attack depending on the turn
 	if(turn % 4 == 0){														// % opperator
 		d = get_damage()- get_damage() * (p->get_protection() / 100.0);
 
@@ -60,6 +69,8 @@ void Enemy_BossGoomba::battle_turn(Player* p){
 	wait_for_input();
 }
 
+
+// Creates minion enemy
 Enemy_Minion::Enemy_Minion() : Enemy(){
 	set_damage(6);
 	set_char('M');
@@ -72,6 +83,7 @@ Enemy_Minion::Enemy_Minion() : Enemy(){
 	set_escape_chance(40);
 }
 
+// Creates boss gru
 Enemy_BossGru::Enemy_BossGru(): Enemy(){
 	set_damage(10);
 	set_char('G');
@@ -84,16 +96,23 @@ Enemy_BossGru::Enemy_BossGru(): Enemy(){
 	turn = 0;
 	set_escape_chance(0);
 }
+
+// Adds a minion to gru
 void Enemy_BossGru::add_minion(Enemy_Minion* m){
 	minions.push_back(m);
 }
+
+// Sets boss gru battle turn
 void Enemy_BossGru::battle_turn(Player* p){
 	int alive = 0;
 	int d = 0;
+
+	// Finds the # of minions alive
 	for(int i = 0; i < minions.size(); i++){
 		if(minions[i]->is_alive()){ alive++; }
 	}
 
+	// Does a different move depending on the # of minions alive
 	if(alive == 0){
 		d = get_damage() / 3;
 		print_text(get_name() + " is weakened without his minions.\n");
@@ -133,6 +152,7 @@ void Enemy_BossGru::battle_turn(Player* p){
 	wait_for_input();
 }
 
+// Creates cactus enemy
 Enemy_Cactus::Enemy_Cactus(){
 	set_damage(6);
 	set_char('C');
@@ -145,6 +165,7 @@ Enemy_Cactus::Enemy_Cactus(){
 	set_escape_chance(40);
 }
 
+// Creates garfield boss
 Enemy_BossGarfield::Enemy_BossGarfield(){
 	set_damage(100);
 	set_char('G');
@@ -157,8 +178,12 @@ Enemy_BossGarfield::Enemy_BossGarfield(){
 	turn = 0;
 	set_escape_chance(0);
 }
+
+// Sets garfields battle turn
 void Enemy_BossGarfield::battle_turn(Player* p){
-	int wait = 10;
+	int wait = 11;
+
+	// Checks if garfield is awake
 	if(turn < wait){
 		print_text("Garfield is asleep\n\n");
 	}
@@ -174,6 +199,7 @@ void Enemy_BossGarfield::battle_turn(Player* p){
 	wait_for_input();
 }
 
+// Creates the final boss
 Enemy_BossBAF::Enemy_BossBAF(){
 	set_damage(5);
 	set_char('B');
@@ -187,6 +213,8 @@ Enemy_BossBAF::Enemy_BossBAF(){
 	artifacts = 0;
 	set_escape_chance(0);
 }
+
+// Sets the bosses battle turn
 void Enemy_BossBAF::battle_turn(Player* p){
 	int d = 0;
 	switch(turn){													// Switch statement
@@ -225,10 +253,14 @@ void Enemy_BossBAF::battle_turn(Player* p){
 	}
 	wait_for_input();
 }
+
+// Sets what happens when the boss dies
 void Enemy_BossBAF::die(){
 	Enemy::die();
 	get_map()->add_flag("win");
 }
+
+// Sets the ability to use items on the boss
 bool Enemy_BossBAF::use_item(Item i){
 	if(artifacts == 0){
 		if(i.is_equal(a1)){
@@ -258,6 +290,8 @@ bool Enemy_BossBAF::use_item(Item i){
 	}
 	return false;
 }
+
+// Sets artifacts for the boss
 void Enemy_BossBAF::set_a1(Item i){
 	a1 = i;
 }

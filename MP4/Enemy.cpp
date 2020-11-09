@@ -1,7 +1,11 @@
+// Enemy.cpp
+
 #include "Enemy.h"
 
 
 Enemy::Enemy(){
+
+	// Sets initial values
 	damage = 0;
 	hp = -1;
 	max_hp = -1;
@@ -17,6 +21,8 @@ int Enemy::get_hp(){
 	return hp;
 }
 void Enemy::set_hp(int a){
+
+	// Sets hp to 0 if it is below 0
 	if(a < 0){
 		a = 0;
 	}
@@ -51,6 +57,8 @@ void Enemy::set_current_frame(int f){
 }
 
 void Enemy::update(){
+
+	// Moves the enemy based on its ai
 	switch(ai){
 	case 0:
 		y_v = 0;
@@ -80,17 +88,23 @@ void Enemy::update(){
 }
 
 void Enemy::die(){
+
+	// Moves enemy off screen and sets it to dead
 	set_x(-1);
 	set_y(-1);
 	alive = false;
 }
 void Enemy::view(){
+
+	// Prints the enemy sprite
 	if(cut.get_height()>0){							// Function call returns value
 		cut.displayFrame(current_frame);			// Function call
 	}
 	reset_colors();
 }
 void Enemy::battle_turn(Player* p){
+
+	// Does the default enemy battle turn
 	int d = damage - damage * (p->get_protection()/100.0);
 
 	print_text(get_name() + " did " + to_string(d) + " damage\n\n");
@@ -99,6 +113,8 @@ void Enemy::battle_turn(Player* p){
 }
 
 void Enemy::set_cutscene(string file, int w, int s){
+	
+	// Sets the enemy cutscene opject
 	cut = Cutscene(file, 1, w, s);
 }
 int Enemy::get_width(){

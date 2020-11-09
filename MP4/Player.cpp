@@ -1,5 +1,8 @@
+// Player.cpp
+
 #include "Player.h"
 
+// Sets command keywords
 const vector<string> help_      {"h", "help", "?", "what", "why"};
 
 const vector<string> up_        {"w", "up"};
@@ -24,6 +27,8 @@ const vector<string> use_		{"use", "item"};
 
 
 Player::Player(){
+
+	// Initializes default values
 	set_char('@');
 	set_fg(Color(0, 0, 255));
 	set_type("player");
@@ -56,7 +61,7 @@ void Player::view_tile(int x, int y){
 	int i = get_map()->find_entity(x, y);
 	if(i != -1){
 		Entity* e = get_map()->get_entity(i);
-		if(e->get_type() == "enemy"){										// Nested if statement
+		if(e->get_type() == "enemy"){												// Nested if statement
 			Enemy* en = (Enemy*)e;
 			print_text("----Enemy----\n");
 			print_text("Name:   " + en->get_name() + "\n");
@@ -78,7 +83,7 @@ void Player::view_tile(int x, int y){
 			KeyGate* en = (KeyGate*)e;
 			Item key = en->get_key();
 			int index = -1;
-			for(int i = 0; i < get_inv_size(); i++){								// ++ operator
+			for(int i = 0; i < get_inv_size(); i++){									// ++ operator
 				if(key.is_equal(get_item(i))){
 					index = i;
 				}
@@ -152,7 +157,7 @@ bool Player::use_item(int index, Enemy* e){
 				temp1 = stoi(temp2);
 				used = true;
 				usedT = true;
-				hp += temp1;							// += operator
+				hp += temp1;															// += operator
 			}
 		}
 		temp2 = i.get_attribute("Damage");
@@ -274,7 +279,7 @@ void Player::fight(int x, int y){
 			wait_for_input();
 		}
 		else if(contains(inp, flee_)){
-			temp = rand() % 100 + 1;							// Random number generator
+			temp = rand() % 100 + 1;													// Random number generator
 			success = temp <= enemy->get_escape_chance();
 			if(success){
 				print_text("You successfully escaped " + enemy->get_name() + "\n\n");
@@ -409,7 +414,7 @@ void Player::parse_input(string input){
 
 	if(args.size()>2){
 		if(contains(args[0], get_) && is_integer(args[2])){
-			index = stoi(args[2]);										// Conversion to int
+			index = stoi(args[2]);														// Conversion to int
 			get_item_from_tile(nx, ny, index);
 		}
 		else if(contains(args[0], put_) && is_integer(args[2])){

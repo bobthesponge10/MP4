@@ -1,7 +1,11 @@
+// Entities.cpp
+
 #include "Entities.h"
 
-
+// Creates the enemy locked gate
 EnemyGate::EnemyGate(){
+
+	// Sets initial values
 	open = true;
 	x = -1; y = -1;
 	set_x(-1);
@@ -43,6 +47,8 @@ void EnemyGate::update(){
 	Map* m = get_map();
 	int u, d, l,r;
 	bool temp;
+
+	// Checks if the gate should close on the player
 	u = m->find_entity(x, y - 1);
 	d = m->find_entity(x, y + 1);
 	l = m->find_entity(x - 1, y);
@@ -60,6 +66,7 @@ void EnemyGate::update(){
 		open = false;
 	}
 
+	// Checks if the gate should open
 	temp = open_condition.size() > 0;
 	for(int i = 0; i < open_condition.size(); i++){
 		if(open_condition[i]->is_alive()){
@@ -68,6 +75,7 @@ void EnemyGate::update(){
 	}
 	if(temp){ open = true; }
 
+	// Sets the gate to open or close
 	if(open){
 		set_x(-1);
 		set_y(-1);
@@ -79,6 +87,8 @@ void EnemyGate::update(){
 }
 
 KeyGate::KeyGate(){
+
+	// Sets initial values
 	open = true;
 	opened = false;
 	x = -1; y = -1;
@@ -130,6 +140,8 @@ void KeyGate::update(){
 	Map* m = get_map();
 	int u, d, l, r;
 	bool temp;
+
+	// Checks if the gate should close on the player
 	u = m->find_entity(x, y - 1);
 	d = m->find_entity(x, y + 1);
 	l = m->find_entity(x - 1, y);
@@ -144,8 +156,11 @@ void KeyGate::update(){
 		open = false;
 	}
 
+	// Checks if the gate should be open
 	if(opened){ open = true; }
 
+
+	// Sets the gate to open or close
 	if(open){
 		set_x(-1);
 		set_y(-1);
@@ -156,7 +171,10 @@ void KeyGate::update(){
 
 }
 
+// Creates sign
 Sign::Sign(){
+
+	// Sets initial values
 	set_char('8');
 	set_fg(Color(107, 90, 46));
 	set_type("sign");

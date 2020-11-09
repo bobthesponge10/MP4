@@ -1,3 +1,5 @@
+// Entity.h
+
 #pragma once
 using namespace std;
 #include "Functions.h"
