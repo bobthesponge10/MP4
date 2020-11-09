@@ -13,23 +13,23 @@ int main(){
 	print_text("Loading . . .\n");
 	Cutscene Title    =  Cutscene("Title.txt",    1000 / 5,  1, 30);
 	Cutscene Teleport =  Cutscene("portal.txt",   1000 / 30, 1, 30);
-	Cutscene BadEnd;// = Cutscene("rick.txt",     1000 / 25, 1, 30);
+	Cutscene BadEnd   =  Cutscene("rick.txt",     1000 / 25, 1, 30);
 	Cutscene YouDidIt =  Cutscene("congrats.txt", 1000 / 5,  1, 29);
 	Cutscene GoodEnd  =  Cutscene("he.txt",       1000 / 25, 1, 30);
 
 	// Clears the screen and plays the intro cutscene
 	clear_screen();
-	//Title.video(false);
-	//wait_for_input();
+	Title.video(false);
+	wait_for_input();
 
 	// Clears the screen and gives the initial story
 	clear_screen();
-	//print_text("You are transported to an unknown location\n\n");
-	//wait_for_input();
+	print_text("You are transported to an unknown location\n\n");
+	wait_for_input();
 
 	// Clears the screen and plays the teleportation cutscene
 	clear_screen();
-	//Teleport.video(false);
+	Teleport.video(false);
 
 	// Creates an instance of a player
 	Player p = Player();
@@ -48,6 +48,10 @@ int main(){
 	Map* m = maps[0];
 
 	// Sets the player to the first map
+	m->set_player(&p);
+	m->move_player();
+
+	m = maps[1];
 	m->set_player(&p);
 	m->move_player();
 

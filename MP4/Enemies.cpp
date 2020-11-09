@@ -134,14 +134,14 @@ void Enemy_BossGru::battle_turn(Player* p){
 }
 
 Enemy_Cactus::Enemy_Cactus(){
-	set_damage(12);
+	set_damage(10);
 	set_char('C');
 	set_fg(Color(0, 220, 20));
 	set_ai(0);
 	set_name("Cactus");
 	set_cutscene("cactus.txt", 21, 16);
-	set_max_hp(18);
-	set_hp(18);
+	set_max_hp(16);
+	set_hp(16);
 	set_escape_chance(40);
 }
 

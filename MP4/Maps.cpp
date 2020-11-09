@@ -148,7 +148,7 @@ Level1::Level1() :Map(20, 20){
 		Sword1.add_attribute("Type", "Weapon");
 
 		Armor1.set_name("Worn Armor");
-		Armor1.set_desc("An old set of word down leather armor");
+		Armor1.set_desc("An old set of worn down leather armor");
 		Armor1.add_attribute("Protection", "10");
 		Armor1.add_attribute("Type", "Armor");
 
@@ -436,6 +436,7 @@ Level2::Level2(): Map(52, 28){
 		add_entity(&m4);
 
 		g1.set_coords(27, 20);
+		g1.add_item(tri2);
 		g1.add_minion(&m1);
 		g1.add_minion(&m2);
 		g1.add_minion(&m3);

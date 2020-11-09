@@ -202,7 +202,10 @@ void Map::set_player(Entity* p){
 		add_entity(p);
 	}
 	player = p;
+	cout << p->get_map() << endl;
 	p->set_map(this);
+	cout << p->get_map() << endl;
+	wait_for_input();
 }
 
 void Map::set_default_coords(int x, int y){
