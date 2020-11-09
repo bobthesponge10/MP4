@@ -6,6 +6,7 @@ using namespace std;
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <Windows.h>
 #include <thread>
 #include "Structures.h"
 #include "Item.h"

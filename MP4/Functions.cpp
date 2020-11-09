@@ -78,14 +78,27 @@ void display_items(vector<Item> items, string title){			// Function definition w
 // prints text with waiting in between each character
 void print_text(string text){
 	for(int i = 0; i < text.length(); i++){
-		sleep(20);
+		sleep(5);
 		cout << text[i];										 // Uses string like array
 	}
 }
 
 // Waits for a given ammount of time
 void sleep(int milli){
-	this_thread::sleep_for(chrono::milliseconds(milli));
+	chrono::high_resolution_clock::time_point t1;
+	chrono::high_resolution_clock::time_point t2;
+	chrono::duration<double> time_span;
+
+	t1 = chrono::high_resolution_clock::now();
+	t2 = t1;
+	time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+	while(time_span.count() <= milli/1000.0){
+		t2 = chrono::high_resolution_clock::now();
+		time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+	}
+
+	//this_thread::sleep_for(chrono::milliseconds(milli));
+	//Sleep(milli/10);
 }
 
 // Waits for the user to press enter

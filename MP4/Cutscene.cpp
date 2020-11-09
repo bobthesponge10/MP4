@@ -50,7 +50,7 @@ void Cutscene::video() {								// Function that calls another function
 	// Loops over frames and displays them
 	for (int i = 0; i < int(frames.size()); i++) {		// For loop
 		displayFrame(i);
-		sleep_for(milliseconds(second));
+		sleep(second);
 	}
 	clear_screen();
 }

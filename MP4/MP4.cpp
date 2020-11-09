@@ -4,6 +4,21 @@
 
 
 int main(){
+	/*
+	chrono::high_resolution_clock::time_point t1;
+	chrono::high_resolution_clock::time_point t2;
+	chrono::duration<double> time_span;
+
+	t1 = chrono::high_resolution_clock::now();
+	sleep(1);
+	t2 = chrono::high_resolution_clock::now();
+
+	time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+
+	cout << "Waited " << time_span.count() << " seconds\n";
+	wait_for_input();
+	*/
+
 
 	// Creates vector to store flags from the map
 	vector<string> flags;
