@@ -308,7 +308,7 @@ Level2::Level2(): Map(52, 28){
 		set_tile(29, 24, &s);
 
 		set_tile(25, 25, &s);
-		//set_tile(25, 26, &s);
+		set_tile(25, 26, &s);
 
 		set_tile(29, 25, &s);
 		set_tile(29, 26, &s);

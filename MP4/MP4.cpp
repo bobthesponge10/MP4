@@ -51,10 +51,6 @@ int main(){
 	m->set_player(&p);
 	m->move_player();
 
-	m = maps[1];
-	m->set_player(&p);
-	m->move_player();
-
 	// Starts the main loop
 	while(true){
 

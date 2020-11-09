@@ -52,7 +52,6 @@ void Player::view_tile(int x, int y){
 		hp = max_hp;
 
 		print_text("Teleporting to level " + to_string(p->get_index() + 1) + "\n\n");
-		wait_for_input();
 	}
 	int i = get_map()->find_entity(x, y);
 	if(i != -1){
