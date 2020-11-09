@@ -42,7 +42,7 @@ int main(){
 	Level4 l4 = Level4();
 
 	// Creates a vector to hold all the levels
-	vector<Map*> maps{&l1, &l2, &l3, &l4, &test};
+	vector<Map*> maps{&l1, &l2, &l3, &l4, &test};							// Vector
 
 	// Sets the current map
 	Map* m = maps[0];

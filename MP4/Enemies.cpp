@@ -36,7 +36,7 @@ Enemy_BossGoomba::Enemy_BossGoomba(): Enemy(){
 }
 void Enemy_BossGoomba::battle_turn(Player* p){
 	int d;
-	if(turn % 4 == 0){
+	if(turn % 4 == 0){														// % opperator
 		d = get_damage()- get_damage() * (p->get_protection() / 100.0);
 
 		print_text(get_name() + " did " + to_string(d) + " damage\n\n");
@@ -134,14 +134,14 @@ void Enemy_BossGru::battle_turn(Player* p){
 }
 
 Enemy_Cactus::Enemy_Cactus(){
-	set_damage(10);
+	set_damage(6);
 	set_char('C');
 	set_fg(Color(0, 220, 20));
 	set_ai(0);
 	set_name("Cactus");
 	set_cutscene("cactus.txt", 21, 16);
-	set_max_hp(13);
-	set_hp(13);
+	set_max_hp(12);
+	set_hp(12);
 	set_escape_chance(40);
 }
 
@@ -189,7 +189,7 @@ Enemy_BossBAF::Enemy_BossBAF(){
 }
 void Enemy_BossBAF::battle_turn(Player* p){
 	int d = 0;
-	switch(turn){
+	switch(turn){													// Switch statement
 	case 0:
 		d = 5;
 		print_text("So you made it this far.\n\n");
