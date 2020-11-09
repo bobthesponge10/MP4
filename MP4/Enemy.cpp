@@ -107,3 +107,6 @@ int Enemy::get_width(){
 bool Enemy::is_alive(){
 	return alive;
 }
+bool Enemy::use_item(Item i){
+	return false;
+}

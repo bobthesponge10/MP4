@@ -436,7 +436,6 @@ Level2::Level2(): Map(52, 28){
 		add_entity(&m4);
 
 		g1.set_coords(27, 20);
-		g1.set_coords(1, 1);
 		g1.add_minion(&m1);
 		g1.add_minion(&m2);
 		g1.add_minion(&m3);
@@ -449,6 +448,9 @@ Level2::Level2(): Map(52, 28){
 }
 
 Level3::Level3(): Map(20, 20){
+	s.set_fg(Color(70, 135, 49));
+
+	st.set_bg(Color(181, 152, 71));
 
 	// Sets Walls and floor
 	{
@@ -462,10 +464,272 @@ Level3::Level3(): Map(20, 20){
 			}
 		}
 
+		for(int i = 0; i < 16; i++){
+			set_tile(i + 2, 2, &s);
+			set_tile(i + 2, 4, &s);
+			set_tile(i + 2, 6, &s);
+			set_tile(i + 2, 8, &s);
+			set_tile(i + 2, 10, &s);
+			set_tile(i + 2, 13, &s);
+			set_tile(i + 2, 15, &s);
+		}
 
+		set_tile(2, 2, &st);
+		set_tile(2, 3, &s);
+		set_tile(4, 3, &s);
+		set_tile(17, 3, &s);
+		set_tile(2, 5, &s);
+		set_tile(4, 5, &s);
+		set_tile(8, 5, &s);
+		set_tile(10, 5, &s);
+		set_tile(16, 5, &s);
 
+		set_tile(5, 2, &st);
+		set_tile(3, 4, &st);
+		set_tile(5, 4, &st);
+		set_tile(9, 4, &st);
+		set_tile(11, 4, &st);
+
+		set_tile(3, 6, &st);
+		set_tile(9, 6, &st);
+		set_tile(11, 6, &st);
+		set_tile(15, 6, &st);
+		set_tile(17, 6, &st);
+		set_tile(18, 6, &s);
+
+		set_tile(2, 7, &s);
+		set_tile(16, 7, &s);
+		set_tile(18, 7, &s);
+		set_tile(17, 8, &st);
+		set_tile(18, 8, &s);
+
+		set_tile(13, 9, &s);
+		set_tile(18, 9, &s);
+
+		set_tile(1, 10, &s);
+		set_tile(18, 10, &s);
+		set_tile(2, 10, &st);
+		set_tile(4, 10, &st);
+		set_tile(8, 10, &st);
+		set_tile(12, 10, &st);
+		set_tile(14, 10, &st);
+
+		set_tile(1, 11, &s);
+		set_tile(3, 11, &s);
+		set_tile(5, 11, &s);
+		set_tile(6, 11, &s);
+		set_tile(7, 11, &s);
+		set_tile(9, 11, &s);
+		set_tile(11, 11, &s);
+		set_tile(13, 11, &s);
+
+		set_tile(1, 12, &s);
+		set_tile(3, 12, &s);
+		set_tile(7, 12, &s);
+		set_tile(9, 12, &s);
+		set_tile(11, 12, &s);
+		set_tile(13, 12, &s);
+		set_tile(15, 12, &s);
+		set_tile(16, 12, &s);
+		set_tile(17, 12, &s);
+		set_tile(1, 12, &s);
+
+		set_tile(1, 13, &s);
+		set_tile(2, 13, &st);
+		set_tile(8, 13, &st);
+		set_tile(10, 13, &st);
+		set_tile(14, 13, &st);
+
+		set_tile(1, 14, &s);
+		set_tile(7, 14, &s);
+		set_tile(9, 14, &s);
+		set_tile(17, 14, &s);
+
+		set_tile(1, 15, &s);
+		set_tile(8, 15, &st);
+		set_tile(18, 15, &s);
+
+		set_tile(2, 18, &s);
+		set_tile(2, 16, &s);
+	}
+
+	// Defines Items
+	{
+		sword1.set_name("Master Sword");
+		sword1.set_desc("You know, the one from Zelda");
+		sword1.add_attribute("Damage", "7");
+		sword1.add_attribute("Type", "Weapon");
+
+		armor1.set_name("Master Armor");
+		armor1.set_desc("You know, the one from Zelda");
+		armor1.add_attribute("Protection", "30");
+		armor1.add_attribute("Type", "Armor");
+
+		potion1.set_name("Medium Health Potion");
+		potion1.set_desc("A medium bottle filled with a bright red liquid");
+		potion1.add_attribute("Regen", "12");
+		potion1.add_attribute("Type", "Consumable");
+
+		bomb1.set_name("Medium Bomb");
+		bomb1.set_desc("A medium sized bomb");
+		bomb1.add_attribute("Damage", "15");
+		bomb1.add_attribute("Type", "Consumable");
+
+		key1.set_name("Comically large Key");
+		key1.set_desc("A very large key, comically large some might say");
+		key1.add_attribute("Type", "Key");
+
+		key2.set_name("Master Key");
+		key2.set_desc("You know, the one from Zelda");
+		key2.add_attribute("Type", "Key");
+
+		tri3.set_name("Triforce of GAMING");
+		tri3.set_desc("!!TRANGLE??");
+		tri3.add_attribute("Type", "Artifact");
+	}
+
+	// Sets Health Station
+	{
+		set_tile(12, 12, &h1);
+	}
+
+	// Sets Chests
+	{
+		c1.add_item(potion1);
+		set_tile(7, 5, &c1);
+
+		c2.add_item(key1);
+		c2.add_item(bomb1);
+		set_tile(3, 3, &c2);
+
+		c3.add_item(armor1);
+		c3.add_item(key2);
+		set_tile(18, 14, &c3);
+
+		c4.add_item(sword1);
+		set_tile(6, 14, &c4);
+	}
+
+	// Sets Signs
+	{
+		s1.set_coords(2, 2);
+		s1.set_text("Solve the maze for treasures");
+		add_entity(&s1);
+	}
+
+	// Sets Gates
+	{
+		k1.set_coords(18, 13);
+		k1.set_gate(false);
+		k1.set_open_key(key1);
+		add_entity(&k1);
+
+		k2.set_coords(3, 14);
+		k2.set_gate(false);
+		k2.set_open_key(key2);
+		add_entity(&k2);
+
+		e1.set_coords(2, 17);
+		e1.set_gate(false);
+		e1.add_open_enemy(&g1);
+
+		add_entity(&e1);
+	}
+
+	// Sets Portal
+	{
+		p1.set_index(3);
+		set_tile(1, 18, &p1);
+	}
+
+	// Sets Enemies
+	{
+		ca1.set_coords(3, 4);
+		add_entity(&ca1);
+
+		ca2.set_coords(15, 3);
+		add_entity(&ca2);
+
+		ca3.set_coords(14, 7);
+		add_entity(&ca3);
+
+		ca4.set_coords(10, 11);
+		add_entity(&ca4);
+
+		ca5.set_coords(6, 12);
+		add_entity(&ca5);
+
+		g1.set_coords(12, 17);
+		g1.add_item(tri3);
+		add_entity(&g1);
 	}
 
 	// Set players starting position
 	set_default_coords(1, 1);
+}
+
+Level4::Level4(): Map(21, 20){
+	w.set_bg(Color(74, 134, 232));
+	w.set_char(' ');
+
+	d.set_bg(Color(255, 242, 204));
+
+	d.set_char(' ');
+	g.set_char(' ');
+
+	// Defines Items
+	{
+		tri1.set_name("Triforce of POWER");
+		tri1.set_desc("TRONGLE!!");
+		tri1.add_attribute("Type", "Artifact");
+
+		tri2.set_name("Triforce of COURAGE");
+		tri2.set_desc("TRINGLE!?!");
+		tri2.add_attribute("Type", "Artifact");
+
+		tri3.set_name("Triforce of GAMING");
+		tri3.set_desc("!!TRANGLE??");
+		tri3.add_attribute("Type", "Artifact");
+
+	}
+
+	// Sets environment
+	{
+		for(int y = 0; y < get_h(); y++){
+			for(int x = 0; x < get_w(); x++){
+				set_tile(x, y, &w);
+			}
+		}
+
+		 vector<int> width {5, 9, 11, 13, 13, 15, 15, 15, 15, 15, 13, 13, 11, 9, 5};
+		for(int y = 0; y < 15; y++){
+			for(int w = 0; w < width[y]; w++){
+				set_tile(10 - (width[y] / 2) + w, y + 2, &d);
+			}
+		}
+
+		width = {3, 7, 9, 11, 11, 13, 13, 13, 11, 11, 9, 7, 3};
+		for(int y = 0; y < 13; y++){
+			for(int w = 0; w < width[y]; w++){
+				set_tile(10 - (width[y] / 2) + w, y + 3, &g);
+			}
+		}
+	}
+
+	// Sets boss
+	baf.set_coords(10, 7);
+	baf.set_a1(tri1);
+	baf.set_a2(tri2);
+	baf.set_a3(tri3);
+	add_entity(&baf);
+
+
+	c.add_item(tri1);
+	c.add_item(tri2);
+	c.add_item(tri3);
+	set_tile(8, 13, &c);
+
+	// Set players starting position
+	set_default_coords(10, 14);
+
 }

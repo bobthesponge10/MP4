@@ -171,9 +171,14 @@
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="cactus.txt" />
+    <Text Include="congrats.txt" />
+    <Text Include="demon.txt" />
+    <Text Include="garf.txt" />
     <Text Include="goat.txt" />
     <Text Include="goomba.txt" />
     <Text Include="gru.txt" />
+    <Text Include="he.txt" />
     <Text Include="Jeff.txt" />
     <Text Include="minion.txt" />
     <Text Include="portal.txt" />

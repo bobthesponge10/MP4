@@ -49,6 +49,7 @@ void Player::view_tile(int x, int y){
 	else if(type == "portal"){
 		Portal* p = (Portal*)t;
 		get_map()->add_flag("m"+to_string(p->get_index()));
+		hp = max_hp;
 
 		print_text("Teleporting to level " + to_string(p->get_index() + 1) + "\n\n");
 		wait_for_input();
@@ -168,11 +169,21 @@ bool Player::use_item(int index, Enemy* e){
 			remove_item(index);
 		}
 	}
+	else if(type=="Artifact"){
+		if(e->get_name() == "Baphomet"){
+			if(e->use_item(i)){
+				remove_item(index);
+				used = true;
+			}
+		}
+	}
 	usedT = false;
 	if(hp > max_hp){ hp = max_hp; }
 	if(used){
 		print_text("Used the " + i.get_name() + "\n\n");
 		return true;
+	}else{
+		print_text("Unable to use the " + i.get_name() + "\n\n");
 	}
 	return false;
 }

@@ -80,4 +80,41 @@ private:
 	StoneBrick s;
 
 	Stone st;
+
+	Item potion1, key1, key2, bomb1, armor1, sword1, tri3;
+
+	Chest c1, c2, c3, c4;
+
+	HealStation h1;
+
+	KeyGate k1, k2;
+
+	EnemyGate e1;
+
+	Sign s1;
+
+	Enemy_Cactus ca1, ca2, ca3, ca4, ca5;
+
+	Enemy_BossGarfield g1;
+
+	Portal p1;
+};
+
+class Level4 : public Map{
+public:
+	Level4();
+private:
+	StoneBrick w;
+
+	Grass g;
+
+	Dirt d;
+
+	Stone st;
+
+	Enemy_BossBAF baf;
+
+	Item tri1, tri2, tri3;
+
+	Chest c;
 };

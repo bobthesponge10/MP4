@@ -130,6 +130,21 @@
     <Text Include="gru.txt">
       <Filter>Cutscenes</Filter>
     </Text>
+    <Text Include="garf.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="cactus.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="demon.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="congrats.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
+    <Text Include="he.txt">
+      <Filter>Cutscenes</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeff2.ans">

@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Cutscene.h"
 #include "Structures.h"
+#include "Item.h"
 
 class Player;
 
@@ -21,12 +22,13 @@ public:
 	void set_ai(int a);
 	void set_current_frame(int f);
 	void update();
-	void die();
+	virtual void die();
 	void view();
 	virtual void battle_turn(Player* p);
 	void set_cutscene(string file, int w, int s);
 	int get_width();
 	bool is_alive();
+	virtual bool use_item(Item i);
 private:
 	int ai;
 	int hp;

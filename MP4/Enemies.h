@@ -34,3 +34,32 @@ private:
 	vector<Enemy_Minion*> minions;
 	int turn;
 };
+
+class Enemy_Cactus : public Enemy{
+public:
+	Enemy_Cactus();
+};
+
+class Enemy_BossGarfield : public Enemy{
+public:
+	Enemy_BossGarfield();
+	void battle_turn(Player* p);
+private:
+	int turn;
+};
+
+class Enemy_BossBAF : public Enemy{
+public:
+	Enemy_BossBAF();
+	void battle_turn(Player* p);
+	void die();
+	bool use_item(Item i);
+	void set_a1(Item i);
+	void set_a2(Item i);
+	void set_a3(Item i);
+private:
+	Item a1, a2, a3;
+	bool a;
+	int turn;
+	int artifacts;
+};
