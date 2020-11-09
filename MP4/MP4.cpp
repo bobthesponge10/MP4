@@ -19,17 +19,17 @@ int main(){
 
 	// Clears the screen and plays the intro cutscene
 	clear_screen();
-	Title.video(false);
-	wait_for_input();
+	//Title.video(false);
+	//wait_for_input();
 
 	// Clears the screen and gives the initial story
 	clear_screen();
-	print_text("You are transported to an unknown location\n\n");
-	wait_for_input();
+	//print_text("You are transported to an unknown location\n\n");
+	//wait_for_input();
 
 	// Clears the screen and plays the teleportation cutscene
 	clear_screen();
-	Teleport.video(false);
+	//Teleport.video(false);
 
 	// Creates an instance of a player
 	Player p = Player();
@@ -45,7 +45,7 @@ int main(){
 	vector<Map*> maps{&l1, &l2, &l3, &l4, &test};
 
 	// Sets the current map
-	Map* m = maps[1];
+	Map* m = maps[0];
 
 	// Sets the player to the first map
 	m->set_player(&p);
@@ -105,7 +105,7 @@ int main(){
 			else if(flags[i].substr(0,1) == "m"){
 
 				// Sets the current map to the new level
-				Map* m = maps[stoi(flags[i].substr(1,1))];
+				m = maps[stoi(flags[i].substr(1,1))];
 
 				// Moves the player to the new location
 				m->set_player(&p);
